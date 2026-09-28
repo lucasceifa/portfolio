@@ -1,0 +1,1948 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lucas da Silva Trindade — Full Stack .NET · React</title>
+<meta name="description" content="Lucas da Silva Trindade — Desenvolvedor Full Stack · .NET · C# · React · TypeScript · Node.js · SQL Server. São Paulo, Brasil.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://lucastrindadedev.com.br/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://lucastrindadedev.com.br/">
+<meta property="og:title" content="Lucas da Silva Trindade — Desenvolvedor Full Stack">
+<meta property="og:description" content=".NET · C# · React · TypeScript · Node.js · SQL Server. Portfólio e currículo sempre atualizado.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233a4fd6'/%3E%3Ctext x='32' y='42' font-family='Menlo,monospace' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ELT%3C/text%3E%3C/svg%3E">
+<script>
+  // Aplica o tema salvo antes da pintura para evitar flash
+  try { var s = localStorage.getItem('theme'); if (s === 'light' || s === 'dark') document.documentElement.setAttribute('data-theme', s); } catch (e) {}
+</script>
+<style>
+:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #efede7;
+  --text: #16181d;
+  --muted: #5b606b;
+  --faint: #8a8f99;
+  --line: #e1dfd8;
+  --accent: #3a4fd6;
+  --accent-soft: #e4e7fb;
+  --accent-text: #2a3cb8;
+  --good: #1f7a4d;
+  --good-soft: #e0f1e8;
+  --warn: #9a6200;
+  --warn-soft: #f7ecd6;
+  --shadow: 0 1px 2px rgba(20, 20, 30, .04), 0 4px 16px rgba(20, 20, 30, .04);
+  /* Cores por tipo de stack */
+  --k-back: #1b8a52; --k-front: #2f62d8; --k-data: #a86400; --k-arch: #6c47d9; --k-test: #0e8584;
+  --k-obs: #b5378f; --k-int: #0a7ca6; --k-tools: #5c6570; --k-ai: #d0442c; --k-cloud: #5e7c0a;
+  --nav-h: 60px;
+  --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1115; --surface: #161920; --surface-2: #1c2029; --text: #e7e8ec; --muted: #a0a5b0; --faint: #717785;
+    --line: #262a33; --accent: #8c9bff; --accent-soft: #232a4d; --accent-text: #aab5ff;
+    --good: #5fd49a; --good-soft: #17301f; --warn: #f0b95a; --warn-soft: #33280f;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+    --k-back: #5fd49a; --k-front: #83a8ff; --k-data: #f0b95a; --k-arch: #b49bff; --k-test: #4fd1c5;
+    --k-obs: #ee8fd3; --k-int: #62d2ef; --k-tools: #a3aab6; --k-ai: #ff8f7a; --k-cloud: #b5d65a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1115; --surface: #161920; --surface-2: #1c2029; --text: #e7e8ec; --muted: #a0a5b0; --faint: #717785;
+  --line: #262a33; --accent: #8c9bff; --accent-soft: #232a4d; --accent-text: #aab5ff;
+  --good: #5fd49a; --good-soft: #17301f; --warn: #f0b95a; --warn-soft: #33280f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+  --k-back: #5fd49a; --k-front: #83a8ff; --k-data: #f0b95a; --k-arch: #b49bff; --k-test: #4fd1c5;
+  --k-obs: #ee8fd3; --k-int: #62d2ef; --k-tools: #a3aab6; --k-ai: #ff8f7a; --k-cloud: #b5d65a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+a { color: inherit; }
+h1, h2, h3, h4 { line-height: 1.2; margin: 0; letter-spacing: -.015em; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+.mono { font-family: var(--mono); font-size: .82em; letter-spacing: 0; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 12px; z-index: 100; background: var(--surface); padding: 8px 12px; border-radius: 8px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* ---------- Navegação ---------- */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-in { max-width: 1120px; margin: 0 auto; padding: 0 20px; height: var(--nav-h); display: flex; align-items: center; gap: 20px; }
+.brand { font-weight: 700; font-size: .95rem; letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.brand:hover { color: var(--accent-text); }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; pointer-events: none; }
+.progress i { display: block; height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+
+/* Seletor de idioma */
+.lang { position: relative; }
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 10px 0 8px; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text);
+  font: 600 .74rem var(--mono); letter-spacing: .04em;
+}
+.lang-btn > svg { width: 12px; height: 12px; color: var(--muted); transition: transform .2s; }
+.lang-btn[aria-expanded="true"] > svg { transform: rotate(180deg); }
+.flag { display: inline-flex; width: 21px; height: 15px; border-radius: 3px; overflow: hidden; flex: none; box-shadow: 0 0 0 1px rgba(0, 0, 0, .12); }
+.flag svg { width: 100%; height: 100%; display: block; }
+.lang-menu {
+  position: absolute; right: 0; top: calc(100% + 8px); min-width: 180px; padding: 6px; z-index: 60;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, .14);
+  animation: pop .16s ease-out;
+}
+.lang-menu li {
+  display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; cursor: pointer; font-size: .9rem; outline: none;
+}
+.lang-menu li:hover, .lang-menu li:focus { background: var(--surface-2); }
+.lang-menu li[aria-selected="true"] { font-weight: 600; }
+.lang-menu .check { width: 14px; height: 14px; margin-left: auto; color: var(--accent-text); }
+@keyframes pop { from { opacity: 0; transform: translateY(-4px) scale(.98); } }
+.links { display: flex; gap: 2px; margin-inline: auto; }
+.links a {
+  text-decoration: none; color: var(--muted); font-size: .86rem; padding: 6px 10px; border-radius: 999px; white-space: nowrap;
+  transition: color .15s, background .15s;
+}
+.links a:hover { color: var(--text); }
+.links a.on { color: var(--accent-text); background: var(--accent-soft); }
+.ctrls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.links + .ctrls { margin-left: 0; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface); }
+.seg button {
+  font: 600 .72rem var(--mono); letter-spacing: .04em; border: 0; background: none; color: var(--muted);
+  padding: 5px 9px; border-radius: 999px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+.icon-btn {
+  width: 34px; height: 34px; display: grid; place-items: center; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--text);
+}
+.icon-btn svg { width: 16px; height: 16px; }
+@media (max-width: 1100px) {
+  :root { --nav-h: 56px; --nav-links-h: 44px; }
+  /* Linha 1: nome + controles nas pontas · Linha 2: links roláveis na horizontal */
+  .nav-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; height: auto; padding: 0; gap: 0; max-width: none; }
+  .brand { height: var(--nav-h); display: flex; align-items: center; padding-left: 20px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .ctrls, .links + .ctrls { height: var(--nav-h); padding-right: 20px; margin-left: 0; justify-self: end; }
+  .links {
+    grid-column: 1 / -1; grid-row: 2; height: var(--nav-links-h); align-items: center; overflow-x: auto; scrollbar-width: none;
+    padding: 0 16px; border-top: 1px solid var(--line); margin: 0; gap: 4px; scroll-padding-inline: 16px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 24px), transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 24px), transparent 100%);
+  }
+  .links::-webkit-scrollbar { display: none; }
+  .links a { font-size: .84rem; padding: 6px 11px; }
+}
+@media (max-width: 420px) {
+  .brand { font-size: .88rem; padding-left: 16px; }
+  .ctrls, .links + .ctrls { padding-right: 16px; gap: 6px; }
+  .lang-btn { padding: 0 8px 0 7px; gap: 5px; }
+}
+
+/* ---------- Estrutura de seções ---------- */
+main { overflow-x: clip; padding-top: calc(var(--nav-h) + var(--nav-links-h, 0px) + env(safe-area-inset-top, 0px)); }
+section { scroll-margin-top: calc(var(--nav-h) + var(--nav-links-h, 0px) + 16px); }
+.sec { padding-block: 40px; border-top: 1px solid var(--line); display: grid; gap: 28px; }
+.sec > * { min-width: 0; } /* impede carrosséis de alargarem a coluna */
+@media (min-width: 900px) {
+  .sec { grid-template-columns: 200px 1fr; gap: 44px; padding-block: 52px; }
+  .sec-h { position: sticky; top: calc(var(--nav-h) + var(--nav-links-h, 0px) + 28px); align-self: start; }
+}
+.sec-n { font-family: var(--mono); font-size: .78rem; color: var(--accent-text); display: block; margin-bottom: 8px; }
+.sec-h h2 { font-size: 1.55rem; }
+.sec-h p { color: var(--muted); font-size: .9rem; margin-top: 10px; }
+.sub { font-size: .74rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--faint); font-weight: 600; margin: 0 0 12px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 500 .76rem/1 var(--mono); padding: 6px 9px; border-radius: 7px; background: var(--surface-2); color: var(--muted);
+  border: 1px solid var(--line);
+}
+[data-k="back"] { --k: var(--k-back); } [data-k="front"] { --k: var(--k-front); } [data-k="data"] { --k: var(--k-data); }
+[data-k="arch"] { --k: var(--k-arch); } [data-k="test"] { --k: var(--k-test); } [data-k="obs"] { --k: var(--k-obs); }
+[data-k="int"] { --k: var(--k-int); } [data-k="tools"] { --k: var(--k-tools); } [data-k="ai"] { --k: var(--k-ai); }
+[data-k="cloud"] { --k: var(--k-cloud); }
+.chip[data-k] {
+  color: var(--k); font-weight: 600;
+  background: color-mix(in srgb, var(--k) 10%, var(--surface));
+  border-color: color-mix(in srgb, var(--k) 30%, var(--surface));
+}
+.pill { display: inline-flex; align-items: center; gap: 6px; font: 600 .7rem/1 var(--mono); padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill.on { color: var(--good); background: var(--good-soft); }
+.pill.study { color: var(--warn); background: var(--warn-soft); }
+.pill.off { color: var(--faint); background: var(--surface-2); }
+
+/* ---------- Animações ---------- */
+.rv {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.rv.in { opacity: 1; transform: none; }
+.rv .bar, .rv .meter i { transform-origin: left; transform: scaleX(0); transition: transform 1.1s cubic-bezier(.2, .7, .2, 1) calc(var(--d, 0ms) + 200ms); }
+.rv.in .bar, .rv.in .meter i { transform: scaleX(1); }
+.rv.now, .rv.now .bar, .rv.now .meter i { transition: none; }
+.intro .hero .a { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i) * 110ms + 80ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } }
+.glow {
+  position: absolute; z-index: -1; width: 620px; height: 620px; right: -160px; top: -120px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 62%),
+              radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--good) 16%, transparent), transparent 58%);
+  filter: blur(30px); animation: drift 16s ease-in-out infinite alternate;
+}
+@keyframes drift { to { transform: translate(-90px, 70px) scale(1.12) rotate(25deg); } }
+.card, .cat, .clinks a { transition: transform .25s ease, border-color .2s, box-shadow .25s, opacity .8s cubic-bezier(.2, .7, .2, 1); }
+.card.rv, .cat.rv, .clinks a.rv { transition: opacity .8s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms), transform .8s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms), border-color .2s, box-shadow .25s; }
+@media (hover: hover) {
+  .card.in:hover, .clinks a.in:hover { transform: translateY(-3px); transition-delay: 0ms; box-shadow: 0 10px 30px rgba(20, 20, 40, .08); }
+  .chip { transition: color .15s, border-color .15s, background .15s; }
+  .chip:not([data-k]):hover { color: var(--accent-text); border-color: var(--accent); background: var(--accent-soft); }
+  .chip[data-k]:hover { background: color-mix(in srgb, var(--k) 20%, var(--surface)); border-color: var(--k); }
+  .srow:not(.head):hover .sname { color: var(--accent-text); }
+}
+.job.current .job-body::after {
+  content: ""; position: absolute; left: -6px; top: 5px; width: 11px; height: 11px; border-radius: 50%;
+  box-shadow: 0 0 0 0 var(--accent); animation: ping 2.4s ease-out infinite;
+}
+@keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); } 80%, 100% { box-shadow: 0 0 0 12px transparent; } }
+.hero .kicker .dot { animation: breathe 2.4s ease-in-out infinite; }
+@keyframes breathe { 50% { box-shadow: 0 0 0 7px var(--good-soft); } }
+@media (prefers-reduced-motion: reduce) {
+  .rv, .rv .bar, .rv .meter i { opacity: 1; transform: none; transition: none; }
+  .intro .hero .a, .glow, .job.current .job-body::after, .hero .kicker .dot { animation: none; }
+}
+
+/* ---------- Abertura ---------- */
+.hero { padding-block: 28px 40px; position: relative; isolation: isolate; }
+.hero .role .sep { color: var(--faint); }
+@media (min-width: 900px) { .hero { padding-block: 44px 52px; } }
+.hero .kicker { font-family: var(--mono); font-size: .82rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.hero .kicker .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); display: inline-block; margin-right: 6px; vertical-align: 1px; box-shadow: 0 0 0 4px var(--good-soft); }
+.hero h1 { font-size: clamp(2.5rem, 7.2vw, 5rem); letter-spacing: -.035em; line-height: 1.02; margin-top: 16px; font-weight: 750; }
+.hero h1 .last { color: var(--faint); }
+.hero .role { font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-top: 18px; color: var(--muted); }
+.hero .role strong { color: var(--text); font-weight: 600; }
+.hero .tagline { font-size: clamp(1.25rem, 2.8vw, 1.7rem); margin-top: 26px; max-width: 30ch; line-height: 1.3; letter-spacing: -.02em; font-weight: 500; }
+.hero .tagline em { font-style: normal; color: var(--accent-text); }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: .92rem;
+  padding: 11px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); transition: transform .15s, border-color .15s;
+}
+.btn:hover { transform: translateY(-1px); border-color: var(--faint); }
+.btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+.btn svg { width: 16px; height: 16px; }
+.hero-edu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px; max-width: 820px; }
+.hero-edu a {
+  display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 14px; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); transition: border-color .2s, transform .2s;
+}
+.hero-edu a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.hero-edu .ic { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; flex: none; background: var(--accent-soft); color: var(--accent-text); }
+.hero-edu .ic svg { width: 20px; height: 20px; }
+.hero-edu small { display: block; font: 700 .68rem var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--good); margin-bottom: 3px; }
+.hero-edu small.now { color: var(--warn); }
+.hero-edu b { display: block; font-size: .98rem; line-height: 1.3; }
+.hero-edu span { display: block; color: var(--muted); font-size: .85rem; margin-top: 2px; }
+@media (max-width: 640px) { .hero-edu { grid-template-columns: 1fr; } }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 32px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.stat { background: var(--surface); padding: 20px 22px; }
+.stat b { display: block; font-size: 1.2rem; line-height: 1.3; letter-spacing: -.02em; font-weight: 700; }
+.stat span { display: block; margin-top: 4px; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+@media (max-width: 720px) { .stats { grid-template-columns: 1fr; } }
+
+.hero .kicker .klang { display: inline-flex; align-items: center; gap: 7px; }
+.hero .kicker .klang .flag { width: 18px; height: 13px; }
+
+/* ---------- Idiomas ---------- */
+.langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.langs li { display: flex; gap: 16px; align-items: flex-start; }
+.flag.big { width: 42px; height: 30px; border-radius: 5px; margin-top: 2px; }
+.langs h3 { font-size: 1.1rem; }
+.lvl { display: flex; align-items: center; gap: 10px; margin-top: 6px; font: 600 .8rem var(--mono); color: var(--accent-text); }
+.dots { display: inline-flex; gap: 4px; }
+.dots i { width: 18px; height: 6px; border-radius: 3px; background: var(--surface-2); }
+.dots i.on { background: var(--accent); }
+.ldesc { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+
+/* ---------- Quem sou ---------- */
+.about p { font-size: 1.08rem; color: var(--muted); max-width: 62ch; }
+.about p + p { margin-top: 18px; }
+.about p:first-child { color: var(--text); font-size: 1.22rem; line-height: 1.5; }
+
+/* ---------- Experiência ---------- */
+.jobs { display: grid; gap: 0; }
+.job { position: relative; padding-bottom: 36px; }
+.job:last-child { padding-bottom: 0; }
+.job-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 10px; font: .78rem var(--mono); color: var(--muted); }
+.job-meta .when { color: var(--text); font-weight: 600; }
+.job-meta .dur { color: var(--accent-text); background: var(--accent-soft); padding: 3px 9px; border-radius: 999px; font-weight: 600; }
+.job-meta .place::before { content: "·"; margin-right: 10px; color: var(--faint); }
+.job-body { border-left: 1px solid var(--line); padding-left: 24px; position: relative; }
+.job-body::before { content: ""; position: absolute; left: -6px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.job.current .job-body::before { background: var(--accent); }
+.job h3 { font-size: 1.3rem; }
+.job .role-t { color: var(--muted); margin-top: 4px; }
+.job .ctx { margin-top: 14px; font-size: .95rem; color: var(--muted); padding: 10px 14px; background: var(--surface-2); border-radius: 10px; }
+.job h4 { margin: 22px 0 10px; }
+.job ul.list li { position: relative; padding-left: 18px; color: var(--muted); font-size: .95rem; }
+.job ul.list li + li { margin-top: 6px; }
+.job ul.list li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 6px; height: 1px; background: var(--faint); }
+.impact { display: grid; gap: 8px; }
+.impact li { background: var(--good-soft); border-radius: 10px; padding: 10px 14px; font-size: .95rem; color: var(--text); }
+.impact li b { color: var(--good); }
+.job .chips { margin-top: 20px; }
+
+/* ---------- Stacks ---------- */
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .82rem; color: var(--muted); margin-bottom: 24px; }
+.legend i { display: inline-block; width: 18px; height: 8px; border-radius: 4px; margin-right: 6px; vertical-align: 1px; }
+.lg-work { background: var(--accent); }
+.lg-study { background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--accent) 55%, transparent) 0 3px, color-mix(in srgb, var(--accent) 22%, transparent) 3px 6px); }
+.sgroup + .sgroup { margin-top: 32px; }
+.srow { display: grid; grid-template-columns: minmax(170px, 250px) 1fr 130px; align-items: center; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.srow.head { display: flex; justify-content: space-between; padding: 0 0 8px; border-bottom-color: var(--text); }
+.srow.head .sub { margin: 0; }
+.sname { font-weight: 550; font-size: .93rem; }
+.sdur { font-family: var(--mono); font-size: .76rem; color: var(--muted); }
+.track { position: relative; height: 10px; border-radius: 5px; background: color-mix(in srgb, var(--k, var(--accent)) 8%, var(--surface-2)); overflow: hidden; }
+.bar { position: absolute; top: 0; bottom: 0; left: 0; border-radius: 5px; }
+.bar.work { background: var(--k, var(--accent)); }
+.bar.study { background: color-mix(in srgb, var(--k, var(--accent)) 30%, transparent); }
+.bar.study {
+  background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--k, var(--accent)) 55%, transparent) 0 3px, color-mix(in srgb, var(--k, var(--accent)) 22%, transparent) 3px 6px);
+}
+.sname { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.stags { display: inline-flex; }
+.stags .pill { font-size: .6rem; padding: 3px 6px; }
+.sdur small { display: block; color: var(--faint); font-size: .68rem; margin-top: 2px; }
+.srow.study .sname, .srow.academic .sname { color: var(--muted); }
+
+/* IA */
+.ai-block { margin-top: 36px; }
+.ai-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.ai-head .blk { margin: 0; }
+.ai-sub { color: var(--muted); font-size: .92rem; margin: 8px 0 18px; }
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.ai-tile {
+  display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 14px;
+  background: color-mix(in srgb, var(--k) 6%, var(--surface)); border: 1px solid color-mix(in srgb, var(--k) 22%, var(--line));
+}
+.ai-tile b { display: block; font-size: .95rem; }
+.ai-tile span span { display: block; color: var(--muted); font-size: .84rem; line-height: 1.4; margin-top: 2px; }
+.ai-ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; flex: none; color: #fff; background: linear-gradient(135deg, var(--k), color-mix(in srgb, var(--k) 55%, var(--k-arch))); }
+.ai-ic svg { width: 16px; height: 16px; }
+.ai-tile.in .ai-ic svg { animation: twinkle 3.2s ease-in-out infinite; animation-delay: var(--d, 0ms); }
+@keyframes twinkle { 50% { transform: scale(.78) rotate(20deg); opacity: .8; } }
+
+/* Gestão */
+.mgmt { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.mgmt li { display: grid; gap: 4px; align-content: start; padding: 20px; border-left: 3px solid var(--k-tools); }
+.mgmt b { font-size: 1rem; line-height: 1.35; }
+.mgmt .mdur { font-weight: 700; color: var(--accent-text); margin-top: 8px; }
+.mgmt .msince { font: .74rem var(--mono); color: var(--faint); }
+.stat em { display: block; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); font-style: normal; font-size: .78rem; color: var(--faint); line-height: 1.45; }
+@media (max-width: 680px) {
+  .srow { grid-template-columns: 1fr auto; grid-template-areas: "name dur" "track track"; gap: 8px 10px; padding: 12px 0; }
+  .srow .sname { grid-area: name; }
+  .srow .track { grid-area: track; }
+  .srow .sdur { grid-area: dur; text-align: right; }
+}
+
+/* ---------- Habilidades ---------- */
+.skills-block { margin-top: 36px; }
+.blk { font-size: 1.15rem; margin-bottom: 18px; }
+.skills { padding: 20px 22px; }
+.hard > li { display: grid; grid-template-columns: 170px 1fr; gap: 6px 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.hard > li:first-child { padding-top: 0; }
+.hard > li:last-child { border-bottom: 0; }
+.hard > li > b { font-size: .82rem; color: var(--muted); font-weight: 600; }
+.hard .chips { gap: 5px; }
+.skills .chip { font-size: .72rem; padding: 5px 8px; }
+.soft-h { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.soft-chip { display: inline-flex; align-items: center; gap: 5px; color: var(--text); background: var(--surface-2); font-family: var(--sans); font-weight: 500; font-size: .8rem !important; }
+.soft-chip svg { width: 12px; height: 12px; color: var(--good); }
+@media (max-width: 640px) { .hard > li { grid-template-columns: 1fr; } }
+
+/* ---------- Formação ---------- */
+.edu { display: grid; gap: 20px; }
+.edu .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px 16px; }
+.edu h3 { font-size: 1.18rem; }
+.edu .inst { color: var(--muted); margin-top: 4px; font-size: .95rem; }
+.edu .meta { font-family: var(--mono); font-size: .78rem; color: var(--muted); margin-top: 10px; }
+.edu .lead { margin-top: 18px; }
+.edu .note { margin-top: 12px; color: var(--muted); font-size: .95rem; }
+.edu .syl { margin-top: 20px; }
+.edu .edu-sum { color: var(--muted); font-size: .96rem; }
+.cv-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 28px; }
+button.btn { font: inherit; font-weight: 600; font-size: .92rem; color: inherit; cursor: pointer; }
+button.btn.primary { color: var(--bg); }
+.edu .quote { margin-top: 14px; padding-left: 14px; border-left: 2px solid var(--accent); color: var(--muted); font-size: .95rem; }
+.stages { counter-reset: st; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; margin-top: 18px; }
+.stages li { counter-increment: st; font-size: .88rem; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); display: flex; gap: 10px; }
+.stages li::before { content: counter(st, decimal-leading-zero); font: 600 .74rem/1.6 var(--mono); color: var(--accent-text); }
+.figs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.figs span { font: 600 .76rem var(--mono); padding: 6px 10px; border-radius: 8px; background: var(--accent-soft); color: var(--accent-text); }
+
+/* ---------- Cursos ---------- */
+.ctot { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-bottom: 28px; }
+.ctot div b { display: block; font-size: 2.2rem; letter-spacing: -.03em; line-height: 1.1; }
+.ctot div span { color: var(--muted); font-size: .88rem; }
+.cgroup + .cgroup { margin-top: 40px; }
+.cgroup-h { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 18px; }
+.cgroup-h .blk { margin: 0; }
+.cats { display: grid; gap: 12px; }
+@media (min-width: 700px) { .cats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cat { background: color-mix(in srgb, var(--k, var(--accent)) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--k, var(--accent)) 34%, var(--surface)); border-top: 3px solid var(--k, var(--accent)); border-radius: 14px; overflow: hidden; }
+.cat[open] { grid-column: 1 / -1; }
+.cat:not([open]) summary { height: 100%; }
+.cat summary { list-style: none; cursor: pointer; padding: 16px 20px; align-content: space-between; display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; align-items: center; }
+.cat summary::-webkit-details-marker { display: none; }
+.cat summary h3 { font-size: 1rem; color: var(--k, var(--text)); }
+.cat .cmeta { font: .78rem var(--mono); color: color-mix(in srgb, var(--k, var(--muted)) 70%, var(--text)); text-align: right; white-space: nowrap; }
+.cat .toggle { grid-column: 1 / -1; font-size: .82rem; color: var(--k, var(--accent-text)); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.cat .toggle svg { width: 12px; height: 12px; transition: transform .2s; }
+.cat[open] .toggle svg { transform: rotate(180deg); }
+.cat[open] .toggle .show, .cat:not([open]) .toggle .hide { display: none; }
+.clist { border-top: 1px solid var(--line); padding: 6px 20px 14px; }
+.clist li { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: .9rem; }
+.clist li:last-child { border-bottom: 0; }
+.clist .cm { font: .74rem var(--mono); color: var(--faint); display: flex; gap: 12px; align-items: center; white-space: nowrap; }
+.clist .cm a { color: var(--k, var(--accent-text)); text-decoration: none; }
+.clist .cm a:hover { text-decoration: underline; }
+@media (max-width: 560px) { .clist li { grid-template-columns: 1fr; } }
+.others { padding-block: 8px; }
+.others li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .93rem; }
+.others li:last-child { border-bottom: 0; }
+.others .cm { font: .76rem var(--mono); color: var(--muted); display: flex; gap: 10px; align-items: center; }
+
+/* ---------- Livros ---------- */
+.bfeature { display: block; border-top: 3px solid var(--k); background: color-mix(in srgb, var(--k) 7%, var(--surface)); }
+.bfeature h3 { font-size: 1.45rem; margin-top: 12px; }
+.bfeature .bsub { color: var(--muted); margin-top: 4px; }
+.bfeature .bauth { font: 600 .8rem var(--mono); color: var(--k); margin-top: 10px; }
+.bfeature .bsum { color: var(--muted); margin-top: 14px; max-width: 60ch; }
+
+.shelf-wrap { margin-top: 32px; }
+.shelf-h { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; margin-bottom: 16px; }
+.shelf-h .blk { margin: 0; }
+.shelf-nav { margin-left: auto; display: flex; gap: 6px; }
+.shelf-nav button:first-child svg { transform: rotate(180deg); }
+.shelf {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 300px); gap: 14px; overflow-x: auto; padding: 4px 2px 14px;
+  scroll-snap-type: x mandatory; scrollbar-width: thin; overscroll-behavior-x: contain;
+}
+.bitem {
+  scroll-snap-align: start; position: relative; display: flex; flex-direction: column; padding: 18px 20px 20px; border-radius: 14px;
+  background: color-mix(in srgb, var(--k) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--k) 30%, var(--surface));
+  border-top: 3px solid var(--k); box-shadow: var(--shadow);
+}
+.bitem h4 { font-size: 1rem; line-height: 1.3; padding-right: 34px; }
+.bitem .bsub { font-size: .8rem; color: var(--faint); margin-top: 3px; line-height: 1.35; }
+.bitem .bauth { font: 600 .72rem var(--mono); color: var(--k); margin-top: 8px; }
+.bitem .bsum { font-size: .86rem; color: var(--muted); margin-top: 12px; padding-top: 12px; border-top: 1px solid color-mix(in srgb, var(--k) 22%, var(--line)); line-height: 1.5; }
+/* Fila: menos destaque */
+.queue .shelf { grid-auto-columns: minmax(230px, 260px); }
+.queue .bitem { opacity: .82; transition: opacity .2s; background: var(--surface); box-shadow: none; }
+.queue .bitem:hover { opacity: 1; }
+.queue .bitem .bsum { display: none; }
+.bnum { position: absolute; top: 16px; right: 16px; font: 700 .7rem var(--mono); color: var(--k); background: color-mix(in srgb, var(--k) 14%, var(--surface)); padding: 3px 7px; border-radius: 6px; }
+
+/* ---------- Contato ---------- */
+.contact p { color: var(--muted); margin-bottom: 18px; }
+.cmains { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.cmain { display: flex; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 16px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); transition: transform .2s, border-color .2s; }
+.cmain:hover { transform: translateY(-2px); border-color: var(--c); }
+.cmain .cic { width: 48px; height: 48px; flex: none; border-radius: 14px; display: grid; place-items: center; color: #fff; background: var(--c); }
+.cmain .cic svg { width: 24px; height: 24px; }
+.cmain small { display: block; font: 600 .7rem var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--c); }
+.cmain b { display: block; font-size: clamp(1rem, 2.4vw, 1.3rem); letter-spacing: -.015em; overflow-wrap: normal; }
+.cmain > span:last-child { min-width: 0; }
+.cmain.mail { --c: var(--accent); }
+.cmain.wa { --c: #1faa55; }
+.bbtns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.bbtn { display: inline-flex; align-items: center; gap: 9px; padding: 11px 18px; border-radius: 999px; font-weight: 600; font-size: .92rem; text-decoration: none; color: #fff; transition: transform .15s, filter .15s; }
+.bbtn svg { width: 17px; height: 17px; }
+.bbtn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+.bbtn.li { background: #0a66c2; }
+.bbtn.gh { background: #24292f; }
+:root[data-theme="dark"] .bbtn.gh { background: #f0f3f6; color: #1f2328; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bbtn.gh { background: #f0f3f6; color: #1f2328; } }
+
+/* ---------- Currículo (só na impressão) ---------- */
+#cv { display: none; }
+@media print {
+  @page { size: A4; margin: 13mm 15mm; }
+  :root { color-scheme: light; }
+  html, body { background: #fff !important; }
+  body { padding: 0 !important; }
+  #app, .skip, noscript, .fabs { display: none !important; }
+  #cv { display: block; color: #111; font: 9.6pt/1.4 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  #cv a { color: #1f3a68; }
+  #cv header { text-align: center; margin-bottom: 8pt; }
+  #cv h1 { font-size: 19pt; letter-spacing: .07em; text-transform: uppercase; color: #1f3a68; margin: 0 0 3pt; }
+  #cv header p { margin: 1.5pt 0; color: #222; text-align: center; }
+  #cv .cv-role { font-size: 10.5pt; color: #555; }
+  #cv section { margin-top: 10pt; }
+  #cv h2 { font-size: 10pt; letter-spacing: .1em; text-transform: uppercase; color: #1f3a68; border-bottom: 1pt solid #1f3a68; padding-bottom: 2.5pt; margin: 0 0 6pt; break-after: avoid; }
+  #cv h3 { font-size: 10pt; margin: 7pt 0 0; break-after: avoid; }
+  #cv p { margin: 0 0 3pt; text-align: justify; }
+  #cv .cv-meta { font-style: italic; color: #555; margin-bottom: 3pt; text-align: left; }
+  #cv ul { margin: 0 0 3pt; padding-left: 14pt; list-style: disc; }
+  #cv li { margin: 0 0 2pt; break-inside: avoid; }
+}
+
+/* Cards da Udemy */
+.ucards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.ucard {
+  display: flex; flex-direction: column; padding: 18px 20px; border-radius: 14px;
+  background: color-mix(in srgb, var(--k) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--k) 34%, var(--surface)); border-top: 3px solid var(--k);
+}
+.ucard h4 { font-size: 1rem; line-height: 1.35; color: var(--k); }
+.ucard .uby { font-size: .8rem; color: var(--faint); margin-top: 4px; }
+.ucard .usum { font-size: .9rem; color: var(--muted); margin: 10px 0 14px; }
+.ucard .umeta { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font: .74rem var(--mono); color: var(--faint); }
+.ucard .umeta a { color: var(--k); text-decoration: none; font-weight: 600; }
+.ucard .umeta a:hover { text-decoration: underline; }
+
+/* Listas recolhíveis de stacks */
+.collapsible:not(.open) .more { display: none; }
+.more-btn {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 6px 12px; cursor: pointer;
+  font: 600 .78rem var(--sans); color: var(--accent-text); background: var(--accent-soft); border: 0; border-radius: 999px;
+}
+.more-btn:hover { filter: brightness(1.08); }
+.more-btn svg { width: 12px; height: 12px; transition: transform .2s; }
+.collapsible.open .more-btn svg { transform: rotate(180deg); }
+.collapsible.open .more-btn .show, .collapsible:not(.open) .more-btn .hide { display: none; }
+
+/* Botões flutuantes (currículo + WhatsApp) com tooltip */
+.fabs {
+  position: fixed; z-index: 40; display: flex; gap: 10px;
+  right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+.fab {
+  position: relative; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; border: 0; cursor: pointer;
+  color: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, .22); transition: transform .2s ease, box-shadow .2s;
+}
+.fab svg { width: 21px; height: 21px; }
+.fab.wa { background: #25d366; }
+.fab.cv { background: var(--text); color: var(--bg); }
+.fab:hover { transform: translateY(-2px) scale(1.06); box-shadow: 0 10px 24px rgba(0, 0, 0, .28); }
+.fab::after {
+  content: attr(data-tip); position: absolute; bottom: calc(100% + 10px); right: 0; white-space: nowrap; pointer-events: none;
+  font: 600 .74rem var(--sans); color: var(--bg); background: var(--text); padding: 6px 10px; border-radius: 8px;
+  opacity: 0; transform: translateY(4px); transition: opacity .15s, transform .15s;
+}
+.fab:hover::after, .fab:focus-visible::after { opacity: 1; transform: none; }
+.intro ~ .fabs { animation: rise .6s 1.2s both; }
+@media print { .fabs { display: none !important; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font: .78rem var(--mono); color: var(--faint); }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<a class="skip" href="#sobre" id="skip">Pular para o conteúdo</a>
+<div id="app"></div>
+<article id="cv" aria-hidden="true"></article>
+<div class="fabs">
+  <button type="button" class="fab cv" id="cv-float" data-cv></button>
+  <a class="fab wa" id="wa-float" target="_blank" rel="noopener"></a>
+</div>
+<noscript><p style="padding:120px 20px;max-width:640px;margin:auto">Lucas da Silva Trindade — Desenvolvedor Full Stack · .NET · C# · React · TypeScript · Node.js. E-mail: lucassilvatrindade@hotmail.com</p></noscript>
+
+<script>
+/* =====================================================================
+   DADOS — espelham o portfolio-base.md. Alterar aqui é alterar o site.
+   Textos traduzíveis usam { pt, en, es }; strings simples valem para todos.
+   ===================================================================== */
+
+const PROFILE = {
+  first: 'Lucas', last: 'da Silva Trindade',
+  title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer', es: 'Desarrollador Full Stack' },
+  stacks: ['.NET', 'C#', 'React', 'TypeScript', 'Node.js', 'SQL Server', 'PostgreSQL'],
+  location: { pt: 'São Paulo, SP, Brasil', en: 'São Paulo, Brazil', es: 'São Paulo, Brasil' },
+  devStart: '2022-01',     // programando desde o início da faculdade
+  careerStart: '2023-03',  // atuação profissional desde
+  email: 'lucassilvatrindade@hotmail.com',
+  linkedin: 'https://www.linkedin.com/in/lucas-da-silva-trindade-0a35baxdc',
+  site: 'https://lucastrindadedev.com.br',
+  github: 'https://github.com/lucasceifa',
+  whatsapp: 'https://wa.me/5511948645452',
+  whatsappLabel: '+55 11 94864-5452',
+  phone: '+55 (11) 94864-5452',
+  // Resumo do currículo em PDF. {certs} e {hours} são calculados a partir dos cursos.
+  summary: {
+    pt: 'Desenvolvedor Full Stack, programando desde 2022 e atuando profissionalmente desde 2023 em sistemas corporativos de larga escala. Trabalho com React, Next.js e TypeScript no frontend e com C# (.NET), Node.js e APIs REST no backend, com SQL Server, PostgreSQL e MongoDB. Tenho experiência na estruturação de projetos do zero, conduzindo o levantamento de requisitos junto ao cliente, a modelagem do banco de dados e a definição da arquitetura da solução, além de atuar na gestão de times e projetos dentro de squads ágeis. Proativo, com rotina diária de estudos, sou pós-graduando em Arquitetura de Sistemas .NET pela FIAP e tenho {certs} certificados entre Alura e Udemy ({hours} horas), sempre buscando entregar soluções escaláveis, robustas e de alta qualidade.',
+    en: 'Full Stack Developer coding since 2022 and working professionally since 2023 on large-scale enterprise systems. I work with React, Next.js and TypeScript on the frontend and with C# (.NET), Node.js and REST APIs on the backend, with SQL Server, PostgreSQL and MongoDB. I have experience building projects from the ground up, leading requirements gathering with clients, database modeling and solution architecture definition, as well as managing teams and projects within agile squads. Proactive and committed to daily study, I am pursuing a postgraduate degree in .NET Systems Architecture at FIAP and hold {certs} certificates from Alura and Udemy ({hours} hours), consistently aiming to deliver scalable, robust and high-quality solutions.',
+    es: 'Desarrollador Full Stack, programando desde 2022 y trabajando profesionalmente desde 2023 en sistemas corporativos de gran escala. Trabajo con React, Next.js y TypeScript en el frontend y con C# (.NET), Node.js y APIs REST en el backend, con SQL Server, PostgreSQL y MongoDB. Tengo experiencia en la estructuración de proyectos desde cero, conduciendo el levantamiento de requisitos con el cliente, el modelado de la base de datos y la definición de la arquitectura de la solución, además de actuar en la gestión de equipos y proyectos dentro de squads ágiles. Proactivo, con una rutina diaria de estudio, curso un posgrado en Arquitectura de Sistemas .NET en FIAP y tengo {certs} certificados entre Alura y Udemy ({hours} horas), buscando siempre entregar soluciones escalables, robustas y de alta calidad.',
+  },
+};
+
+const ABOUT = {
+  pt: [
+    'Desenvolvo software desde 2022 e atuo profissionalmente como full stack desde 2023, em sistemas corporativos de larga escala. Comecei escrevendo telas e hoje desenho a arquitetura antes da primeira linha de código: levanto requisitos com o cliente, modelo o banco, defino a estrutura da solução e acompanho o time até a entrega.',
+    'Sou proativo e movido pela sede de evolução. Não gosto de ficar na zona de conforto: busco novos desafios o tempo todo e estou sempre atrás da minha melhor versão, como profissional e como pessoa. Sou dedicado, mantenho uma rotina forte de estudos diários e acompanho de perto as tecnologias que o mercado adota, da arquitetura às ferramentas de IA como Cursor, Claude, Codex, Copilot e ChatGPT, que já fazem parte do meu fluxo de trabalho.',
+    'No dia a dia trabalho com .NET, C# e React, além de Node.js, TypeScript e bancos de dados relacionais e não relacionais. O que eu entrego: APIs, telas, integrações entre sistemas, rotinas agendadas, testes automatizados e monitoramento, do levantamento de requisitos até a produção. O que me move é a parte menos visível do trabalho: reduzir erro em produção, deixar o sistema previsível e transformar decisão técnica em resultado que o negócio percebe.',
+    'Hoje curso pós-graduação em Arquitetura de Sistemas .NET na FIAP e mantenho um plano próprio de estudo em arquitetura de software, com material, cases práticos e correção estruturada.',
+  ],
+  en: [
+    'I have been building software since 2022 and working professionally as a full stack developer since 2023, on large-scale enterprise systems. I started out building screens; today I design the architecture before the first line of code: I gather requirements with the client, model the database, define the structure of the solution and guide the team through delivery.',
+    'I am proactive and driven by a hunger to grow. I don’t like staying in my comfort zone: I keep looking for new challenges and for the best version of myself, as a professional and as a person. I am dedicated, keep a strong daily study routine and closely follow the technologies the market adopts, from architecture to AI tools like Cursor, Claude, Codex, Copilot and ChatGPT, which are already part of my workflow.',
+    'Day to day I work with .NET, C# and React, along with Node.js, TypeScript and both relational and non-relational databases. What I deliver: APIs, user interfaces, system integrations, scheduled jobs, automated tests and monitoring, from requirements gathering to production. What drives me is the least visible part of the job: reducing production errors, making systems predictable and turning technical decisions into results the business can feel.',
+    'I am currently pursuing a postgraduate degree in .NET Systems Architecture at FIAP and keep my own software architecture study plan, with study material, hands-on cases and structured review.',
+  ],
+  es: [
+    'Desarrollo software desde 2022 y trabajo profesionalmente como full stack desde 2023, en sistemas corporativos de gran escala. Empecé construyendo pantallas y hoy diseño la arquitectura antes de la primera línea de código: levanto requisitos con el cliente, modelo la base de datos, defino la estructura de la solución y acompaño al equipo hasta la entrega.',
+    'Soy proactivo y me mueve la sed de evolución. No me gusta quedarme en la zona de confort: busco nuevos desafíos todo el tiempo y siempre voy tras mi mejor versión, como profesional y como persona. Soy dedicado, mantengo una fuerte rutina de estudio diario y sigo de cerca las tecnologías que adopta el mercado, desde la arquitectura hasta herramientas de IA como Cursor, Claude, Codex, Copilot y ChatGPT, que ya forman parte de mi flujo de trabajo.',
+    'En el día a día trabajo con .NET, C# y React, además de Node.js, TypeScript y bases de datos relacionales y no relacionales. Lo que entrego: APIs, interfaces, integraciones entre sistemas, rutinas programadas, pruebas automatizadas y monitoreo, desde el levantamiento de requisitos hasta producción. Lo que me mueve es la parte menos visible del trabajo: reducir errores en producción, hacer que el sistema sea predecible y convertir decisiones técnicas en resultados que el negocio percibe.',
+    'Actualmente curso un posgrado en Arquitectura de Sistemas .NET en FIAP y mantengo un plan propio de estudio en arquitectura de software, con material, casos prácticos y corrección estructurada.',
+  ],
+};
+
+/* Idiomas: flag = bandeira (FLAG), level = 1 a 5 */
+const LANGUAGES = [
+  { flag: 'pt', name: { pt: 'Português', en: 'Portuguese', es: 'Portugués' }, levelName: { pt: 'Fluente', en: 'Fluent', es: 'Fluido' }, level: 5,
+    desc: { pt: 'Comunicação plena no trabalho, na escrita técnica e com clientes.', en: 'Full proficiency at work, in technical writing and with clients.', es: 'Comunicación plena en el trabajo, en la escritura técnica y con clientes.' } },
+  { flag: 'en', name: { pt: 'Inglês', en: 'English', es: 'Inglés' }, levelName: { pt: 'Avançado', en: 'Advanced', es: 'Avanzado' }, level: 4,
+    desc: { pt: 'Leitura de documentação técnica, escrita e conversação no dia a dia.', en: 'Reading technical documentation, writing and everyday conversation.', es: 'Lectura de documentación técnica, escritura y conversación en el día a día.' } },
+];
+
+/* Experiências — tópicos copiados do currículo.
+   Um tópico pode ser texto simples ou [destaque, resto].
+   Datas dentro do texto vêm dos dados: {start}, {end} e as chaves de `dates` (ex.: {promo}).
+   Os chips de stacks vêm das siglas em STACKS e MGMT (campo `code`); `featured` define os 6 que aparecem antes do "ver mais". */
+const JOBS = [
+  {
+    company: 'Minerva Foods', code: 'MIN',
+    featured: ['.NET', 'C#', 'React', 'TypeScript', 'Node.js', 'PostgreSQL'], start: '2025-08', end: null,
+    role: { pt: 'Analista de Sistemas Full Stack', en: 'Full Stack Systems Analyst', es: 'Analista de Sistemas Full Stack' },
+    place: 'São Paulo, SP',
+    context: { pt: 'Sistemas corporativos de larga escala, em equipe multidisciplinar.', en: 'Large-scale enterprise systems, within a multidisciplinary team.', es: 'Sistemas corporativos de gran escala, en un equipo multidisciplinario.' },
+    work: [
+      { pt: 'Atuo no desenvolvimento e na evolução de sistemas corporativos de larga escala, integrando uma equipe multidisciplinar de desenvolvedores.',
+        en: 'Develop and evolve large-scale enterprise systems as part of a multidisciplinary engineering team.',
+        es: 'Trabajo en el desarrollo y la evolución de sistemas corporativos de gran escala, integrando un equipo multidisciplinario de desarrolladores.' },
+      { pt: ['Estruturação de projetos do zero:', 'conduzo o levantamento de requisitos junto ao cliente e às áreas de negócio, a modelagem do banco de dados e a definição da arquitetura da aplicação.'],
+        en: ['Building projects from the ground up:', 'lead requirements gathering with clients and business stakeholders, database modeling and application architecture definition.'],
+        es: ['Estructuración de proyectos desde cero:', 'conduzco el levantamiento de requisitos con el cliente y las áreas de negocio, el modelado de la base de datos y la definición de la arquitectura de la aplicación.'] },
+      { pt: ['Gestão de time e projetos:', 'distribuo demandas, acompanho prazos e entregas, realizo code review e mantenho o alinhamento contínuo com stakeholders.'],
+        en: ['Team and project management:', 'assign tasks, track deadlines and deliverables, run code reviews and keep continuous alignment with stakeholders.'],
+        es: ['Gestión de equipo y proyectos:', 'distribuyo demandas, sigo plazos y entregas, realizo code review y mantengo la alineación continua con los stakeholders.'] },
+      { pt: ['Arquitetura CQRS:', 'aplico a separação entre comandos e consultas para reduzir acoplamento e melhorar a escalabilidade e a manutenibilidade das aplicações.'],
+        en: ['CQRS architecture:', 'apply command and query separation to reduce coupling and improve application scalability and maintainability.'],
+        es: ['Arquitectura CQRS:', 'aplico la separación entre comandos y consultas para reducir el acoplamiento y mejorar la escalabilidad y la mantenibilidad de las aplicaciones.'] },
+      { pt: 'Desenvolvimento backend com .NET 8.0 e C#, utilizando Entity Framework para persistência de dados, além de serviços em Node.js.',
+        en: 'Backend development with .NET 8.0 and C#, using Entity Framework for data persistence, plus Node.js services.',
+        es: 'Desarrollo backend con .NET 8.0 y C#, utilizando Entity Framework para la persistencia de datos, además de servicios en Node.js.' },
+      { pt: 'Desenvolvimento frontend com React, Vite e TypeScript, gerenciamento de estado via Redux e estilização com Tailwind e Bootstrap.',
+        en: 'Frontend development with React, Vite and TypeScript, state management with Redux and styling with Tailwind and Bootstrap.',
+        es: 'Desarrollo frontend con React, Vite y TypeScript, gestión de estado con Redux y estilos con Tailwind y Bootstrap.' },
+      { pt: 'Integração com APIs de gráficos e bibliotecas especializadas em visualização de dados, além de recursos de geolocalização com Google Maps.',
+        en: 'Integration with charting APIs and specialized data visualization libraries, as well as geolocation features using Google Maps.',
+        es: 'Integración con APIs de gráficos y bibliotecas especializadas en visualización de datos, además de recursos de geolocalización con Google Maps.' },
+      { pt: 'Criação e manutenção de serviços agendados com Quartz e integração entre sistemas internos e externos, com foco em robustez e escalabilidade.',
+        en: 'Creation and maintenance of scheduled jobs with Quartz and integration across internal and external systems, focused on robustness and scalability.',
+        es: 'Creación y mantenimiento de servicios programados con Quartz e integración entre sistemas internos y externos, con foco en robustez y escalabilidad.' },
+      { pt: 'Implementação de testes automatizados com XUnit e Vitest, com monitoramento da cobertura de testes para garantir a confiabilidade do código.',
+        en: 'Implementation of automated tests with XUnit and Vitest, monitoring test coverage to ensure code reliability.',
+        es: 'Implementación de pruebas automatizadas con XUnit y Vitest, con monitoreo de la cobertura de pruebas para garantizar la confiabilidad del código.' },
+      { pt: 'Implementação de observabilidade e logs completos com OpenTelemetry, permitindo rastreamento, auditoria e diagnóstico de incidentes.',
+        en: 'Implementation of observability and end-to-end logging with OpenTelemetry, enabling tracing, auditing and incident diagnosis.',
+        es: 'Implementación de observabilidad y logs completos con OpenTelemetry, permitiendo trazabilidad, auditoría y diagnóstico de incidentes.' },
+      { pt: 'Atuação direta com banco de dados, incluindo criação de queries, procedures e scripts em SQL Server e PostgreSQL.',
+        en: 'Hands-on database work, including writing queries, stored procedures and scripts in SQL Server and PostgreSQL.',
+        es: 'Trabajo directo con bases de datos, incluyendo creación de consultas, procedures y scripts en SQL Server y PostgreSQL.' },
+    ],
+    impact: [
+      { pt: ['De executor a líder técnico:', 'oriento times e conduzo plannings e especificações de diversos projetos, aplicando conceitos de arquitetura para que o desenho da solução saia antes do código.'],
+        en: ['From executor to technical lead:', 'I guide teams and run planning and specification for multiple projects, applying architecture concepts so solution design comes before code.'],
+        es: ['De ejecutor a líder técnico:', 'oriento equipos y conduzco plannings y especificaciones de diversos proyectos, aplicando conceptos de arquitectura para que el diseño de la solución salga antes del código.'] },
+      { pt: ['Mais eficiência nos produtos existentes,', 'com uso de IA e otimização de código legado.'],
+        en: ['Higher efficiency in existing products,', 'using AI and optimizing legacy code.'],
+        es: ['Más eficiencia en los productos existentes,', 'con uso de IA y optimización de código legado.'] },
+      { pt: ['Formação de time:', 'atuo como referência técnica no onboarding de desenvolvedores novos.'],
+        en: ['Team building:', 'I am the technical reference during new developers’ onboarding.'],
+        es: ['Formación de equipo:', 'actúo como referencia técnica en el onboarding de nuevos desarrolladores.'] },
+    ],
+  },
+  {
+    company: 'Arquitetura Humana', code: 'AH',
+    featured: ['.NET', 'C#', 'React', 'TypeScript', 'SQL Server', 'MongoDB'], start: '2023-03', end: '2025-08', dates: { promo: '2025-01' },
+    role: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer', es: 'Desarrollador Full Stack' },
+    context: { pt: 'Sistemas corporativos com incidência alta de erro em produção e ferramentas ausentes na área comercial.', en: 'Enterprise systems with a high rate of production errors and missing tools in the sales area.', es: 'Sistemas corporativos con alta incidencia de errores en producción y herramientas ausentes en el área comercial.' },
+    work: [
+      { pt: 'Promovido a Desenvolvedor Pleno em {promo}, após atuação como Júnior desde {start}.',
+        en: 'Promoted to Mid-Level Developer in {promo}, after joining as a Junior Developer in {start}.',
+        es: 'Promovido a Desarrollador Semi Senior en {promo}, tras actuar como Junior desde {start}.' },
+      { pt: 'Desenvolvimento Full Stack com React (TypeScript) e Next.js no frontend e .NET (C#) no backend.',
+        en: 'Full stack development with React (TypeScript) and Next.js on the frontend and .NET (C#) on the backend.',
+        es: 'Desarrollo Full Stack con React (TypeScript) y Next.js en el frontend y .NET (C#) en el backend.' },
+      { pt: 'Implementação de novas funcionalidades, manutenção de sistemas corporativos e desenvolvimento de APIs REST.',
+        en: 'Implementation of new features, maintenance of enterprise systems and development of REST APIs.',
+        es: 'Implementación de nuevas funcionalidades, mantenimiento de sistemas corporativos y desarrollo de APIs REST.' },
+      { pt: 'Aplicação de testes automatizados, prevenção de erros e boas práticas de Clean Code e versionamento com GitFlow.',
+        en: 'Automated testing, error prevention and Clean Code best practices, with version control using GitFlow.',
+        es: 'Aplicación de pruebas automatizadas, prevención de errores y buenas prácticas de Clean Code y versionado con GitFlow.' },
+      { pt: 'Participação ativa em squads ágeis, atuando no planejamento, no desenvolvimento, na revisão de código e na entrega contínua.',
+        en: 'Active participation in agile squads, contributing to planning, development, code review and continuous delivery.',
+        es: 'Participación activa en squads ágiles, actuando en la planificación, el desarrollo, la revisión de código y la entrega continua.' },
+    ],
+    impact: [
+      { pt: ['Redução de cerca de 98% na incidência de erros:', 'de 2 a 3 ocorrências por dia para uma por mês ou menos, com mais de 500 issues resolvidas no GitHub.'],
+        en: ['Around 98% fewer production errors:', 'from 2–3 incidents a day to one a month or less, with 500+ GitHub issues resolved.'],
+        es: ['Reducción de cerca del 98% en la incidencia de errores:', 'de 2 a 3 ocurrencias por día a una por mes o menos, con más de 500 issues resueltas en GitHub.'] },
+      { pt: ['Meta batida pela primeira vez em cerca de 3 anos:', 'o sistema digital da área comercial voltou a atingir a meta.'],
+        en: ['Target hit for the first time in about 3 years:', 'the sales area’s digital system reached its goal again.'],
+        es: ['Meta alcanzada por primera vez en cerca de 3 años:', 'el sistema digital del área comercial volvió a alcanzar la meta.'] },
+      { pt: ['Módulos criados do zero,', 'incluindo um módulo personalizado que integra diversos outros em um fluxo complexo de feedback aos usuários.'],
+        en: ['Modules built from scratch,', 'including a custom module that combines several others into a complex user feedback flow.'],
+        es: ['Módulos creados desde cero,', 'incluido un módulo personalizado que integra varios otros en un flujo complejo de feedback a los usuarios.'] },
+      { pt: ['Produto de análise com IA:', 'gera feedbacks sobre os usuários avaliados a partir de dados de currículo e perfil.'],
+        en: ['AI-powered analysis product:', 'generates feedback on evaluated users based on resume and profile data.'],
+        es: ['Producto de análisis con IA:', 'genera feedbacks sobre los usuarios evaluados a partir de datos de currículum y perfil.'] },
+    ],
+  },
+  {
+    company: 'URMOBO', code: 'URM',
+    featured: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'APIs REST', 'Bootstrap'], start: '2023-11', end: '2024-04',
+    role: { pt: 'Desenvolvedor Full Stack Freelancer', en: 'Freelance Full Stack Developer', es: 'Desarrollador Full Stack Freelance' },
+    context: { pt: 'Sistemas de gestão empresarial, com foco em front-end.', en: 'Business management systems, with a front-end focus.', es: 'Sistemas de gestión empresarial, con foco en front-end.' },
+    work: [
+      { pt: 'Desenvolvimento Full Stack com foco em frontend, utilizando React e Next.js.',
+        en: 'Full stack development with a frontend focus, using React and Next.js.',
+        es: 'Desarrollo Full Stack con foco en frontend, utilizando React y Next.js.' },
+      { pt: 'Criação de funcionalidades, integração com APIs e desenvolvimento de sistemas de gestão empresarial.',
+        en: 'Feature development, API integration and delivery of business management systems.',
+        es: 'Creación de funcionalidades, integración con APIs y desarrollo de sistemas de gestión empresarial.' },
+      { pt: 'Utilização de ferramentas modernas do ecossistema React e de padrões voltados à escalabilidade do código.',
+        en: 'Use of modern tooling from the React ecosystem and patterns aimed at code scalability.',
+        es: 'Uso de herramientas modernas del ecosistema React y de patrones orientados a la escalabilidad del código.' },
+    ],
+    impact: [
+      { pt: ['Base do front-end:', 'estruturação e componentização de todo o projeto.'],
+        en: ['Front-end foundation:', 'structured and componentized the entire project.'],
+        es: ['Base del front-end:', 'estructuración y componentización de todo el proyecto.'] },
+      { pt: ['Qualidade das entregas:', 'ajustes, QA e validação das funcionalidades do front-end.'],
+        en: ['Delivery quality:', 'fixes, QA and validation of front-end features.'],
+        es: ['Calidad de las entregas:', 'ajustes, QA y validación de las funcionalidades del front-end.'] },
+    ],
+  },
+];
+
+/* Onde usei cada coisa — siglas separadas por espaço:
+   UNIC = Cruzeiro do Sul · AH = Arquitetura Humana · URM = URMOBO · MIN = Minerva Foods · FIAP = pós FIAP
+   São só códigos internos: nunca aparecem no site. Servem para gerar os chips de stacks
+   de cada experiência (JOBS[].code) e de cada formação (EDUCATION[].code). */
+
+/* Stacks: [nome, desde 'AAAA-MM', tipo, onde, até?]
+   tipo: 'pro'      → uso profissional, ativo hoje
+         'study'    → apenas estudo (sem uso profissional)
+         'academic' → apenas estudo, só na faculdade (precisa de 'até')
+   O tempo é calculado sozinho e cada grupo é ordenado do maior período para o menor.
+   A cor de cada stack vem de CATEGORY, mais abaixo. */
+const STACKS = [
+  { name: { pt: 'Linguagens e plataformas', en: 'Languages & platforms', es: 'Lenguajes y plataformas' }, items: [
+    ['C#', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['.NET', '2023-03', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['ASP.NET MVC', '2023-03', 'pro', 'UNIC AH'],
+    ['JavaScript', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['TypeScript', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Node.js', '2025-04', 'pro', 'MIN'],
+    ['Java', '2022-07', 'academic', 'UNIC', '2022-12'],
+  ]},
+  { name: 'Front-end', items: [
+    ['React', '2023-01', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Next.js', '2023-03', 'pro', 'AH URM MIN'],
+    ['HTML', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['CSS', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Bootstrap', '2022-07', 'pro', 'AH URM MIN'],
+    ['Vite', '2023-03', 'pro', 'UNIC AH MIN'],
+    ['Tailwind', '2023-03', 'pro', 'AH MIN'],
+    ['Redux', '2025-08', 'pro', 'MIN'],
+    [{ pt: 'Gráficos e visualização de dados', en: 'Charts & data visualization', es: 'Gráficos y visualización de datos' }, '2023-03', 'pro', 'AH URM MIN'],
+  ]},
+  { name: { pt: 'Back-end e integração', en: 'Back end & integration', es: 'Back-end e integración' }, items: [
+    [{ pt: 'APIs REST', en: 'REST APIs', es: 'APIs REST' }, '2023-01', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Entity Framework', '2023-01', 'pro', 'AH URM MIN FIAP'],
+    ['Dapper', '2023-03', 'pro', 'AH MIN FIAP'],
+    ['Quartz', '2023-01', 'pro', 'AH MIN'],
+    ['Google Maps API', '2025-08', 'pro', 'MIN'],
+    ['Serverless Functions', '2026-03', 'study', 'FIAP'],
+    ['RabbitMQ', '2026-03', 'study', 'FIAP'],
+    ['MassTransit', '2026-03', 'study', 'FIAP'],
+    ['Kong API Gateway', '2026-03', 'study', 'FIAP'],
+  ]},
+  { name: { pt: 'Banco de dados', en: 'Databases', es: 'Bases de datos' }, items: [
+    ['SQL Server', '2023-01', 'pro', 'UNIC AH MIN FIAP'],
+    ['MongoDB', '2023-01', 'pro', 'UNIC AH MIN FIAP'],
+    ['PostgreSQL', '2025-08', 'pro', 'MIN FIAP'],
+    ['Elasticsearch', '2026-03', 'study', 'FIAP'],
+  ]},
+  { name: { pt: 'Arquitetura e práticas', en: 'Architecture & practices', es: 'Arquitectura y prácticas' }, items: [
+    ['Clean Code', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    [{ pt: 'Arquitetura em camadas', en: 'Layered architecture', es: 'Arquitectura en capas' }, '2023-03', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Clean Architecture', '2023-01', 'pro', 'UNIC AH URM MIN FIAP'],
+    [{ pt: 'LGPD e privacidade de dados', en: 'LGPD & data privacy', es: 'LGPD y privacidad de datos' }, '2023-01', 'pro', 'AH URM MIN FIAP'],
+    ['DDD', '2023-03', 'pro', 'AH MIN FIAP'],
+    ['CQRS', '2025-08', 'pro', 'MIN FIAP'],
+    [{ pt: 'Arquitetura hexagonal', en: 'Hexagonal architecture', es: 'Arquitectura hexagonal' }, '2026-03', 'study', 'FIAP'],
+    [{ pt: 'Arquitetura orientada a eventos', en: 'Event-driven architecture', es: 'Arquitectura orientada a eventos' }, '2026-03', 'study', 'FIAP'],
+    [{ pt: 'Microsserviços', en: 'Microservices', es: 'Microservicios' }, '2026-03', 'study', 'FIAP'],
+  ]},
+  { name: { pt: 'Testes, observabilidade e ferramentas', en: 'Testing, observability & tools', es: 'Pruebas, observabilidad y herramientas' }, items: [
+    [{ pt: 'Git e GitFlow', en: 'Git & GitFlow', es: 'Git y GitFlow' }, '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['GitHub', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Visual Studio', '2023-03', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Visual Studio Code', '2022-07', 'pro', 'UNIC AH URM MIN FIAP'],
+    ['Bitbucket', '2025-08', 'pro', 'MIN FIAP'],
+    ['Jira', '2025-08', 'pro', 'MIN'],
+    ['XUnit', '2023-03', 'pro', 'UNIC AH MIN FIAP'],
+    ['Vitest', '2025-08', 'pro', 'MIN'],
+    ['OpenTelemetry', '2025-08', 'pro', 'MIN'],
+    ['TDD', '2023-03', 'pro', 'AH MIN FIAP'],
+    ['BDD', '2023-03', 'pro', 'AH MIN FIAP'],
+    [{ pt: 'Testes de integração', en: 'Integration testing', es: 'Pruebas de integración' }, '2025-01', 'pro', 'AH MIN FIAP'],
+    [{ pt: 'Testes de carga', en: 'Load testing', es: 'Pruebas de carga' }, '2026-03', 'study', 'FIAP'],
+    ['Datadog', '2026-03', 'study', 'FIAP'],
+    ['New Relic', '2026-03', 'study', 'FIAP'],
+    ['Zabbix', '2026-03', 'study', 'FIAP'],
+    ['Prometheus', '2026-03', 'study', 'FIAP'],
+    ['Grafana', '2026-03', 'study', 'FIAP'],
+  ]},
+  { name: { pt: 'Cloud e DevOps', en: 'Cloud & DevOps', es: 'Cloud y DevOps' }, items: [
+    ['Docker', '2025-01', 'pro', 'MIN FIAP'],
+    ['Bitbucket Pipelines', '2025-08', 'pro', 'MIN FIAP'],
+    ['Microsoft Azure (Functions, API Management, Service Bus, AKS)', '2026-03', 'study', 'FIAP'],
+    ['Azure DevOps', '2026-03', 'study', 'FIAP'],
+    ['Amazon AWS (ECS, ECR)', '2026-03', 'study', 'FIAP'],
+    ['Kubernetes', '2026-03', 'study', 'FIAP'],
+    ['Linux', '2026-03', 'study', 'FIAP'],
+    ['GitHub Actions', '2026-03', 'study', 'FIAP'],
+  ]},
+];
+
+/* Ferramentas de IA: uso ativo no dia a dia, sem tempo individual */
+const AI_TOOLS = {
+  since: '2025',
+  where: 'AH MIN FIAP',
+  items: [
+    ['Cursor', { pt: 'Editor com IA para desenvolver e refatorar', en: 'AI code editor for building and refactoring', es: 'Editor con IA para desarrollar y refactorizar' }],
+    ['Claude', { pt: 'Análise de código, arquitetura e documentação', en: 'Code analysis, architecture and documentation', es: 'Análisis de código, arquitectura y documentación' }],
+    ['Codex', { pt: 'Agente de código para tarefas e revisões', en: 'Coding agent for tasks and reviews', es: 'Agente de código para tareas y revisiones' }],
+    ['GitHub Copilot', { pt: 'Sugestões e autocompletar direto no editor', en: 'Inline suggestions and completions in the editor', es: 'Sugerencias y autocompletado en el editor' }],
+    ['ChatGPT', { pt: 'Pesquisa, estudo e apoio a decisões técnicas', en: 'Research, study and technical decision support', es: 'Investigación, estudio y apoyo a decisiones técnicas' }],
+    [{ pt: 'Agentes de IA', en: 'AI agents', es: 'Agentes de IA' }, { pt: 'Automação de fluxos de desenvolvimento', en: 'Automating development workflows', es: 'Automatización de flujos de desarrollo' }],
+  ],
+};
+
+/* Gestão e metodologias: [nome, desde 'AAAA-MM', onde] */
+const MGMT = [
+  ['Scrum', '2023-01', 'UNIC AH MIN'],
+  ['Kanban', '2023-01', 'UNIC AH MIN'],
+  [{ pt: 'Escrita de requisitos funcionais e não funcionais', en: 'Writing functional & non-functional requirements', es: 'Redacción de requisitos funcionales y no funcionales' }, '2023-01', 'UNIC AH URM MIN FIAP'],
+  [{ pt: 'Gestão de times e projetos', en: 'Team & project management', es: 'Gestión de equipos y proyectos' }, '2025-08', 'MIN FIAP'],
+  [{ pt: 'Plannings técnicas', en: 'Technical planning sessions', es: 'Plannings técnicas' }, '2025-08', 'MIN FIAP'],
+];
+
+const HARD = [
+  [{ pt: 'Arquitetura', en: 'Architecture', es: 'Arquitectura' }, ['CQRS', 'DDD', 'Clean Architecture', { pt: 'Microsserviços', en: 'Microservices', es: 'Microservicios' }, { pt: 'Hexagonal', en: 'Hexagonal', es: 'Hexagonal' }, { pt: 'Camadas', en: 'Layered', es: 'En capas' }, { pt: 'Orientada a eventos', en: 'Event-driven', es: 'Orientada a eventos' }, { pt: 'Modelagem de dados', en: 'Data modeling', es: 'Modelado de datos' }, { pt: 'LGPD e privacidade de dados', en: 'LGPD & data privacy', es: 'LGPD y privacidad de datos' }]],
+  [{ pt: 'Back-end', en: 'Back end', es: 'Back-end' }, ['C#', '.NET', 'ASP.NET MVC', 'Node.js', { pt: 'APIs REST', en: 'REST APIs', es: 'APIs REST' }, 'Entity Framework', 'Dapper', 'Quartz', { pt: 'Middlewares e injeção de dependência', en: 'Middleware & dependency injection', es: 'Middlewares e inyección de dependencias' }, 'Serverless']],
+  ['Front-end', ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Vite', 'Redux', 'Tailwind', 'Bootstrap', { pt: 'Gráficos e visualização de dados', en: 'Charts & data visualization', es: 'Gráficos y visualización de datos' }]],
+  [{ pt: 'Dados', en: 'Data', es: 'Datos' }, ['SQL Server', 'PostgreSQL', 'MongoDB', 'Elasticsearch', { pt: 'Queries e procedures', en: 'Queries & stored procedures', es: 'Consultas y procedures' }]],
+  [{ pt: 'Mensageria e integração', en: 'Messaging & integration', es: 'Mensajería e integración' }, ['RabbitMQ', 'MassTransit', 'Azure Service Bus', 'Kong API Gateway', 'Google Maps API', { pt: 'Filas', en: 'Queues', es: 'Colas' }, { pt: 'Integração entre sistemas internos e externos', en: 'Internal & external system integration', es: 'Integración entre sistemas internos y externos' }]],
+  [{ pt: 'Cloud e DevOps', en: 'Cloud & DevOps', es: 'Cloud y DevOps' }, ['Microsoft Azure', 'Azure Functions', 'Azure API Management', 'AKS', 'Azure DevOps', 'Amazon AWS (ECS, ECR)', 'Docker', 'Kubernetes', 'Linux', 'GitHub Actions', 'Bitbucket Pipelines']],
+  [{ pt: 'Qualidade', en: 'Quality', es: 'Calidad' }, ['XUnit', 'Vitest', 'TDD', 'BDD', { pt: 'Testes de integração', en: 'Integration testing', es: 'Pruebas de integración' }, { pt: 'Testes de carga', en: 'Load testing', es: 'Pruebas de carga' }, { pt: 'Cobertura de testes', en: 'Test coverage', es: 'Cobertura de pruebas' }, 'Code review', 'Clean Code']],
+  [{ pt: 'Observabilidade', en: 'Observability', es: 'Observabilidad' }, ['OpenTelemetry', 'Datadog', 'New Relic', 'Zabbix', 'Prometheus', 'Grafana', { pt: 'Log estruturado e auditoria', en: 'Structured logging & auditing', es: 'Logs estructurados y auditoría' }]],
+  [{ pt: 'Ferramentas', en: 'Tools', es: 'Herramientas' }, [{ pt: 'Git e GitFlow', en: 'Git & GitFlow', es: 'Git y GitFlow' }, 'GitHub', 'Bitbucket', 'Jira', 'Visual Studio', 'Visual Studio Code']],
+  [{ pt: 'Inteligência artificial', en: 'Artificial intelligence', es: 'Inteligencia artificial' }, ['Cursor', 'Claude', 'Codex', 'GitHub Copilot', 'ChatGPT', { pt: 'Agentes de IA', en: 'AI agents', es: 'Agentes de IA' }, { pt: 'Desenvolvimento assistido por IA', en: 'AI-assisted development', es: 'Desarrollo asistido por IA' }]],
+];
+
+const SOFT = [
+  [{ pt: 'Proatividade', en: 'Proactivity', es: 'Proactividad' }, { pt: 'Tomo a iniciativa sem esperar ser acionado.', en: 'I take initiative without waiting to be asked.', es: 'Tomo la iniciativa sin esperar a que me lo pidan.' }],
+  [{ pt: 'Autodidata', en: 'Self-taught', es: 'Autodidacta' }, { pt: 'Aprendo sozinho, com rotina diária de estudos.', en: 'I learn on my own, with a daily study routine.', es: 'Aprendo por mi cuenta, con una rutina diaria de estudio.' }],
+  [{ pt: 'Aprendizado rápido', en: 'Fast learner', es: 'Aprendizaje rápido' }, { pt: 'Assimilo novas tecnologias e domínios em pouco tempo.', en: 'I pick up new technologies and domains quickly.', es: 'Asimilo nuevas tecnologías y dominios en poco tiempo.' }],
+  [{ pt: 'Visão sistêmica', en: 'Systems thinking', es: 'Visión sistémica' }, { pt: 'Enxergo o impacto de cada parte no todo: sistemas, times e negócio.', en: 'I see how each part affects the whole: systems, teams and business.', es: 'Veo el impacto de cada parte en el todo: sistemas, equipos y negocio.' }],
+  [{ pt: 'Visão de produto', en: 'Product mindset', es: 'Visión de producto' }, { pt: 'Entendo o produto e converto a dor do cliente em um software que agrega valor.', en: 'I understand the product and turn customer pain points into software that adds value.', es: 'Entiendo el producto y convierto el dolor del cliente en un software que agrega valor.' }],
+  [{ pt: 'Resolução de problemas', en: 'Problem solving', es: 'Resolución de problemas' }, { pt: 'Investigo a causa raiz antes de propor a solução.', en: 'I dig into the root cause before proposing a fix.', es: 'Investigo la causa raíz antes de proponer la solución.' }],
+  [{ pt: 'Trabalho em equipe', en: 'Teamwork', es: 'Trabajo en equipo' }, { pt: 'Planejamento, revisão e entrega em squads ágeis.', en: 'Planning, review and delivery in agile squads.', es: 'Planificación, revisión y entrega en squads ágiles.' }],
+  [{ pt: 'Comunicação eficiente', en: 'Effective communication', es: 'Comunicación eficiente' }, { pt: 'Traduzo decisões técnicas para o negócio e documento com clareza.', en: 'I translate technical decisions for the business and document clearly.', es: 'Traduzco decisiones técnicas para el negocio y documento con claridad.' }],
+  [{ pt: 'Adaptabilidade', en: 'Adaptability', es: 'Adaptabilidad' }, { pt: 'Me ajusto rápido a mudanças de prioridade, time e contexto.', en: 'I adjust quickly to shifting priorities, teams and context.', es: 'Me adapto rápido a cambios de prioridad, equipo y contexto.' }],
+  [{ pt: 'Engajamento com novas tecnologias', en: 'Engagement with new technologies', es: 'Compromiso con nuevas tecnologías' }, { pt: 'Acompanho o que o mercado adota e levo para o dia a dia o que faz sentido.', en: 'I follow what the market adopts and bring what makes sense into daily work.', es: 'Sigo lo que adopta el mercado y llevo al día a día lo que tiene sentido.' }],
+  [{ pt: 'Tutoria e onboarding', en: 'Mentoring & onboarding', es: 'Tutoría y onboarding' }, { pt: 'Referência técnica para desenvolvedores em integração.', en: 'Technical reference for developers being onboarded.', es: 'Referencia técnica para desarrolladores en integración.' }],
+  [{ pt: 'Levantamento de requisitos', en: 'Requirements gathering', es: 'Levantamiento de requisitos' }, { pt: 'Condução direta com cliente e áreas de negócio.', en: 'Led directly with clients and business areas.', es: 'Conducido directamente con el cliente y las áreas de negocio.' }],
+  [{ pt: 'Organização e planejamento', en: 'Organization & planning', es: 'Organización y planificación' }, { pt: 'Distribuição de tarefas e acompanhamento de entregas.', en: 'Task distribution and delivery tracking.', es: 'Distribución de tareas y seguimiento de entregas.' }],
+];
+
+const EDUCATION = [
+  {
+    title: { pt: 'Pós-graduação em Arquitetura de Sistemas .NET', en: 'Postgraduate Degree in .NET Systems Architecture', es: 'Posgrado en Arquitectura de Sistemas .NET' },
+    featured: ['DDD', 'Microsserviços', 'Microsoft Azure (Functions, API Management, Service Bus, AKS)', 'Docker', 'Kubernetes', 'RabbitMQ'],
+    // Tópicos que aparecem no currículo em PDF (mesma estrutura do currículo original)
+    cvBullets: [
+      { pt: 'Ênfase em DDD (Domain-Driven Design), CQRS, arquitetura hexagonal, arquitetura em camadas e arquitetura orientada a eventos.',
+        en: 'Emphasis on DDD (Domain-Driven Design), CQRS, hexagonal architecture, layered architecture and event-driven architecture.',
+        es: 'Énfasis en DDD (Domain-Driven Design), CQRS, arquitectura hexagonal, arquitectura en capas y arquitectura orientada a eventos.' },
+      { pt: 'Mensageria com RabbitMQ, estratégias de logs e observabilidade, e boas práticas de projeto no ecossistema .NET.',
+        en: 'Messaging with RabbitMQ, logging and observability strategies, and design best practices within the .NET ecosystem.',
+        es: 'Mensajería con RabbitMQ, estrategias de logs y observabilidad, y buenas prácticas de diseño en el ecosistema .NET.' },
+    ],
+    code: 'FIAP', inst: 'FIAP + Alura (PosTech)', short: 'FIAP', startYear: '2026', years: '2026 — 2027', hours: 360, status: 'progress',
+    lead: { pt: 'Desenho de sistemas .NET robustos integrados à nuvem Azure, com ênfase em decisão arquitetural antes da implementação.', en: 'Designing robust .NET systems integrated with the Azure cloud, with emphasis on architectural decisions before implementation.', es: 'Diseño de sistemas .NET robustos integrados a la nube Azure, con énfasis en la decisión arquitectónica antes de la implementación.' },
+    summary: {
+      pt: 'Na pós estou aprofundando o desenho de sistemas .NET de ponta a ponta: modelagem com DDD e event storming, APIs com .NET 8 e C# 12, persistência com PostgreSQL, Dapper, MongoDB e EF Core, testes com TDD, BDD, integração e carga, CI/CD com GitHub Actions e Azure DevOps, monitoramento com Zabbix, Prometheus e Grafana, nuvem com Azure Functions, API Management, Service Bus, Docker, Kubernetes e AKS, além de microsserviços, mensageria com RabbitMQ e MassTransit, Clean Architecture e LGPD. Isso está me tornando um dev melhor porque muda a ordem das decisões: antes do código, penso em limites de domínio, resiliência, observabilidade e custo de operação, e consigo justificar cada escolha técnica para o time e para o negócio.',
+      en: 'In this program I am deepening end-to-end .NET system design: modeling with DDD and event storming, APIs with .NET 8 and C# 12, persistence with PostgreSQL, Dapper, MongoDB and EF Core, TDD, BDD, integration and load testing, CI/CD with GitHub Actions and Azure DevOps, monitoring with Zabbix, Prometheus and Grafana, cloud with Azure Functions, API Management, Service Bus, Docker, Kubernetes and AKS, plus microservices, messaging with RabbitMQ and MassTransit, Clean Architecture and LGPD. It is making me a better developer because it changes the order of decisions: before writing code, I think about domain boundaries, resilience, observability and operating cost, and I can justify every technical choice to the team and to the business.',
+      es: 'En el posgrado estoy profundizando el diseño de sistemas .NET de punta a punta: modelado con DDD y event storming, APIs con .NET 8 y C# 12, persistencia con PostgreSQL, Dapper, MongoDB y EF Core, pruebas con TDD, BDD, de integración y de carga, CI/CD con GitHub Actions y Azure DevOps, monitoreo con Zabbix, Prometheus y Grafana, nube con Azure Functions, API Management, Service Bus, Docker, Kubernetes y AKS, además de microservicios, mensajería con RabbitMQ y MassTransit, Clean Architecture y LGPD. Me está haciendo un mejor desarrollador porque cambia el orden de las decisiones: antes del código, pienso en límites de dominio, resiliencia, observabilidad y costo de operación, y puedo justificar cada elección técnica ante el equipo y el negocio.',
+    },
+  },
+  {
+    title: { pt: 'Tecnólogo em Análise e Desenvolvimento de Sistemas', en: 'Associate Degree in Systems Analysis and Development', es: 'Tecnólogo en Análisis y Desarrollo de Sistemas' },
+    featured: ['C#', 'Java', 'JavaScript', 'HTML', 'CSS', 'SQL Server'],
+    code: 'UNIC', inst: 'Universidade Cruzeiro do Sul (UNICSUL)', short: 'Universidade Cruzeiro do Sul', years: '2022 — 2023', hours: 2000, approx: true, status: 'done',
+    summary: {
+      pt: 'Foi onde comecei a programar de verdade. A graduação construiu a base que sustenta o resto: algoritmos e pensamento computacional, programação orientada a objetos com C# e Java, modelagem e desenvolvimento de banco de dados com SQL, engenharia de software, desenvolvimento web com HTML, CSS e JavaScript, aplicativos móveis, prototipagem e jornada do usuário. Me ajudou a ser um dev melhor ao dar o vocabulário formal do que eu já fazia na prática: modelagem, ciclo de vida de software e a noção de que decisão de estrutura vem antes de código.',
+      en: 'This is where I truly started coding. The degree built the foundation for everything else: algorithms and computational thinking, object-oriented programming with C# and Java, database modeling and development with SQL, software engineering, web development with HTML, CSS and JavaScript, mobile apps, prototyping and user journey. It made me a better developer by giving me the formal vocabulary for what I was already doing in practice: modeling, the software lifecycle and the idea that structural decisions come before code.',
+      es: 'Fue donde empecé a programar de verdad. La carrera construyó la base que sostiene todo lo demás: algoritmos y pensamiento computacional, programación orientada a objetos con C# y Java, modelado y desarrollo de bases de datos con SQL, ingeniería de software, desarrollo web con HTML, CSS y JavaScript, aplicaciones móviles, prototipado y recorrido del usuario. Me ayudó a ser un mejor desarrollador al darme el vocabulario formal de lo que ya hacía en la práctica: modelado, ciclo de vida del software y la noción de que la decisión de estructura viene antes del código.',
+    },
+  },
+];
+
+const STUDY_PLAN = {
+  title: { pt: 'Plano próprio de arquitetura de software', en: 'Personal software architecture study plan', es: 'Plan propio de arquitectura de software' },
+  modules: 60, stages: 8, hours: 250, since: '2026-09',
+  desc: { pt: 'Cada módulo combina curso, material técnico próprio, vídeos selecionados e um case prático com correção estruturada.', en: 'Each module combines a course, my own technical material, curated videos and a hands-on case with structured review.', es: 'Cada módulo combina curso, material técnico propio, videos seleccionados y un caso práctico con corrección estructurada.' },
+  list: [
+    { pt: 'Fundamentos e estilos arquiteturais', en: 'Fundamentals & architectural styles', es: 'Fundamentos y estilos arquitectónicos' },
+    { pt: 'DDD e modelagem de domínio', en: 'DDD & domain modeling', es: 'DDD y modelado de dominio' },
+    { pt: 'Comunicação e mensageria', en: 'Communication & messaging', es: 'Comunicación y mensajería' },
+    { pt: 'Dados e CQRS', en: 'Data & CQRS', es: 'Datos y CQRS' },
+    { pt: 'Escala e performance', en: 'Scale & performance', es: 'Escala y rendimiento' },
+    { pt: 'Resiliência e observabilidade', en: 'Resilience & observability', es: 'Resiliencia y observabilidad' },
+    { pt: 'Documentação e infraestrutura', en: 'Documentation & infrastructure', es: 'Documentación e infraestructura' },
+    { pt: 'Drills de sistemas completos', en: 'End-to-end system drills', es: 'Drills de sistemas completos' },
+  ],
+};
+
+/* Cursos Alura: [título, horas, data 'AAAA-MM-DD' ou null, slug do certificado ou null] */
+const COURSES = [
+  { id: 'arq', k: 'arch', name: { pt: 'Arquitetura e qualidade', en: 'Architecture & quality', es: 'Arquitectura y calidad' }, items: [
+    ['DDD: modelagem estratégica de sistemas', 20, '2026-05-08', 'ddd-modelagem-estrategica-sistemas'],
+    ['JavaScript: conhecendo o Browser e padrões de projeto', 12, '2022-10-25', 'javascript-es6-orientacao-a-objetos-parte-1'],
+    ['C# Reflection: manipule dinamicamente tipos e assemblies', 10, '2026-06-14', 'csharp-reflection-manipule-dinamicamente-tipos-assemblies'],
+    ['Qualidade de Software: escrevendo testes de maneira eficiente', 10, null, null],
+    ['Requisitos Não Funcionais: atributos de qualidade e priorização', 10, '2026-09-26', 'requisitos-nao-funcionais-qualidade-arquitetural'],
+    ['Arquitetura CSS: descomplicando os problemas', 8, '2022-10-25', 'arquitetura-css'],
+    ['Guia de estilos: montando páginas com componentes', 8, '2022-10-25', 'guia-estilos-paginas-componentes'],
+    ['.NET: gerenciamento de memória para otimização de performance', 8, '2026-06-14', 'dotnet-gerenciamento-memoria-otimizacao-performance'],
+    ['Testes em .NET: criando testes de unidade com xUnit', 8, null, null],
+    ['Testes em .NET: fundamentos, boas práticas e automação em pipelines CI/CD', 8, null, null],
+  ]},
+  { id: 'back', k: 'back', name: { pt: 'Back-end e .NET', en: 'Back end & .NET', es: 'Back-end y .NET' }, items: [
+    ['HTTP: Entendendo a web por baixo dos panos', 14, '2022-10-10', 'http-fundamentos'],
+    ['JavaScript: programando a Orientação a Objetos', 10, '2022-10-25', 'javascritpt-orientacao-objetos'],
+    ['TypeScript parte 2: avançando na linguagem', 10, '2023-02-28', 'typescript-avancando-linguagem'],
+    ['TypeScript parte 3: mais técnicas e boas práticas', 10, '2023-03-10', 'typescript-tecnicas-boas-praticas'],
+    ['.NET: criando uma API Web com ASP.NET Core', 8, null, null],
+    ['Avançando com PHP: Arrays, Strings, Função e Web', 8, '2023-02-16', 'php-arrays-strings-funcoes'],
+    ['C# e Exceções: construa aplicações resilientes', 8, '2026-06-17', 'csharp-excecoes-construa-aplicacoes-resilientes'],
+    ['C# parte 1: primeiros passos', 8, '2023-03-18', 'csharp-parte-1-primeiros-passos'],
+    ['C# parte 2: Entendendo a Orientação a Objetos', 8, '2023-03-20', 'csharp-parte-2-introducao-orientacao-objetos'],
+    ['C# parte 3: entendendo herança e interface', 8, '2023-03-22', 'csharp-parte-3-heranca-interfaces-polimorfismo'],
+    ['C# parte 4: entendendo exceções', 8, '2023-03-29', 'csharp-parte-4-excecoes'],
+    ['C# parte 5: bibliotecas DLLs, documentação e usando o NuGet', 8, '2023-03-31', 'csharp-biblioteca-dll-documentacao-nuget'],
+    ['C# parte 6: Strings, expressões regulares e a classe Object', 8, '2023-04-05', 'csharp-string-regex-object'],
+    ['C# parte 7: Array e tipos genéricos', 8, '2023-04-13', 'csharp-array-tipo-generico'],
+    ['C# parte 8: List, lambda, linq', 8, '2023-04-26', 'csharp-list-lambda-linq'],
+    ['C# parte 9: entrada e saída (I/O) com streams', 8, '2023-05-03', 'csharp-io'],
+    ['JavaScript: criando requisições', 8, '2023-02-20', 'javascript-criando-requisicoes'],
+    ['PHP: conceitos, lidando com dados, loops e mais', 6, '2023-02-15', 'php-primeiros-passos'],
+  ]},
+  { id: 'front', k: 'front', name: 'Front-end', items: [
+    ['JavaScript e HTML: desenvolva um jogo e pratique lógica de programação', 16, '2022-10-10', 'logica-programacao-javascript-html'],
+    ['React: desenvolvendo com JavaScript', 14, '2023-07-21', 'react-desenvolvendo-javascript'],
+    ['HTML e CSS: responsividade com mobile-first', 12, '2022-10-25', 'html-css-responsividade-mobile-first'],
+    ['jQuery: avance na biblioteca mais popular do mercado parte 2', 12, '2023-01-11', 'jquery-a-biblioteca-do-mercado-parte-2'],
+    ['jQuery: domine a biblioteca mais popular do mercado parte 1', 12, '2022-10-25', 'jquery-a-biblioteca-do-mercado'],
+    ['React: comece seu projeto full stack', 12, '2026-09-28', 'react-crie-primeira-pagina-web'],
+    ['React: escrevendo com TypeScript', 12, '2025-08-10', 'react-modernizando-escrever-typescript'],
+    ['JavaScript e HTML: pratique lógica com desenhos, animações e um jogo', 10, '2022-08-23', 'logica-programacao-pratica-com-desenho-animacoes-em-jogo'],
+    ['JavaScript para Web: Crie páginas dinâmicas', 10, '2022-11-25', 'javascript-web-paginas-dinamicas'],
+    ['JavaScript: de padrões a uma abordagem funcional', 10, '2022-11-25', 'javascript-padroes-abordagem-funcional'],
+    ['JavaScript: explorando a linguagem', 10, '2022-11-25', 'javascript-introducao'],
+    ['React: lidando com arquivos estáticos', 10, '2023-02-07', 'react-arquivos-estaticos'],
+    ['TypeScript Part 1: Evolving Your JavaScript', 10, '2023-02-28', 'typescript-evoluindo-javascript'],
+    ['Flexbox: posicione elementos na tela', 9, '2022-10-25', 'posicione-elementos-com-flexbox'],
+    ['Bootstrap 4: criando uma landing page responsiva', 8, '2022-10-25', 'bootstrap-landing-page'],
+    ['CSS Grid: simplificando layouts', 8, '2022-10-10', 'css-grid-layout'],
+    ['HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags', 8, '2025-08-09', 'html-css-ambiente-arquivos-tags'],
+    ['HTML e CSS: Classes, posicionamento e Flexbox', 8, '2023-02-22', 'html-css-classes-posicionamento-flexbox'],
+    ['HTML e CSS: praticando HTML/CSS', 8, '2022-10-10', 'html-css-praticando-html-css'],
+    ['HTML5 e CSS3 parte 2: posicionamento, listas e navegação', 8, '2022-10-25', 'html5-css3-posicionamento-listas-navegacao'],
+    ['HTML5 e CSS3 parte 4: avançando no CSS', 8, '2022-10-25', 'html5-css3-avancando-css'],
+    ['JavaScript: métodos de array', 8, '2023-02-06', 'javascript-metodos-array'],
+    ['React: como os componentes funcionam', 8, '2022-11-07', 'react-componentes-funcionam'],
+    ['React: migrando para TypeScript', 8, '2026-09-28', 'react-migrando-typescript'],
+    ['SASS: CSS sintaticamente espetacular', 8, '2023-02-22', 'sass-css-sintaticamente-espetacular'],
+    ['Tailwind CSS: estilizando a sua página com classes utilitárias', 8, '2022-09-26', 'tailwind-css-estilizando-pagina-classes-utilitarias'],
+    ['WordPress: integração WhatsApp e internacionalização', 8, '2023-02-17', 'wordpress-integracao-whatsapp'],
+    ['WordPress: sites com Elementor', 8, '2023-02-28', 'worpress-sites-elementor'],
+    ['Layouts Responsivos: trabalhando com layouts mobile', 7, '2022-10-25', 'mobile-first-layouts-responsivos'],
+    ['Acessibilidade web: crie designs inclusivos', 6, '2025-08-09', 'acessibilidade-web-design-inclusivos'],
+    ['CSS: construindo layouts com Grid', 6, '2022-10-25', 'css-construindo-layouts-grid'],
+    ['CSS: Flexbox e layouts responsivos', 6, '2023-02-23', 'css-flexbox-layouts-responsivos'],
+    ['HTML e CSS: cabeçalho, footer e variáveis CSS', 6, '2023-02-20', 'html-css-cabecalho-footer-variaveis-css'],
+    ['HTML e CSS: trabalhando com responsividade e publicação de projetos', 6, '2023-02-07', 'html-css-responsividade-publicacao-projetos'],
+    ['JavaScript na Web: armazenando dados no navegador', 6, '2022-11-25', 'javascript-web-armazenando-dados-navegador'],
+    ['JavaScript: manipulando o DOM', 6, '2022-11-25', 'javascript-manipulando-dom'],
+    ['JavaScript: validações e reconhecimento de voz', 6, '2023-02-23', 'javascript-validacoes-reconhecimento-voz'],
+    ['Lógica de programação: comece em lógica com o jogo Pong e JavaScript', 6, '2022-09-13', 'pong-javascript'],
+    ['Praticando CSS: Grid e Flexbox', 6, '2023-02-07', 'praticando-css-grid-flexbox'],
+    ['React: abstraindo seu CSS com Styled Components', 6, '2023-02-28', 'react-styled-components'],
+    ['Vetores e Animação com SVG: trabalhando com CSS e JavaScript', 6, '2023-01-12', 'svg-css-animacao'],
+    ['JavaScript: projeto de conclusão', 5, '2023-02-14', 'projeto-carreira-javascript'],
+    ['Lógica de programação: laços e listas com JavaScript', 4, '2022-08-31', 'javascript-listas-lacos'],
+  ]},
+  { id: 'data', k: 'data', name: { pt: 'Dados e banco', en: 'Data & databases', es: 'Datos y bases de datos' }, items: [
+    ['JavaScript: programando na linguagem da web', 20, '2022-10-25', 'javascript-programando-na-linguagem-web'],
+    ['Bootstrap: criação de uma single-page responsiva', 12, '2022-10-25', 'bootstrap-criacao-single-page-responsiva'],
+    ['Expressões regulares: capturando textos de forma mágica', 12, '2022-10-25', 'expressoes-regulares'],
+    ['C# Async: aplique recursos de programação assíncrona em seus projetos', 8, '2026-08-30', 'csharp-async-recursos-programacao-assincrona-projetos'],
+    ['CSS: dispondo elementos com Flexbox e Grid', 8, '2022-10-25', 'css-dispondo-elementos-flexbox-grid'],
+    ['HTML5 e CSS3 parte 1: crie uma página da Web', 8, '2025-08-09', 'html5-css3-primeiros-passos'],
+    ['HTML5 e CSS3 parte 3: trabalhando com formulários e tabelas', 8, '2022-10-25', 'html5-css3-formularios-tabelas'],
+    ['JavaScript na Web: validação de Formulários e HTML5', 8, '2022-11-25', 'javascript-web-validacao-formularios-html5'],
+    ['JavaScript: validando formulários', 8, '2023-02-22', 'javascript-validando-formularios'],
+    ['Acessibilidade web parte 1: tornando seu front-end inclusivo', 6, '2025-08-10', 'acessibilidade-web-front-end'],
+    ['JavaScript: consumindo e tratando dados de uma API', 6, '2022-11-25', 'javascript-consumindo-tratando-dados-api'],
+    ['Acessibilidade web parte 2: componentes acessíveis com um pouco de JavaScript', 4, '2022-05-30', 'acessibilidade-web-front-end-parte-2'],
+  ]},
+  { id: 'lead', k: 'tools', name: { pt: 'Liderança e processos', en: 'Leadership & processes', es: 'Liderazgo y procesos' }, items: [
+    ['Comunicação: como se expressar bem e ser compreendido', 12, '2026-09-07', 'comunicacao-se-expressar-bem-ser-compreendido'],
+    ['JavaScript: aprofundando em MVC, padrão Proxy e Factory', 12, '2026-09-28', 'javascript-es6-orientacao-a-objetos-parte-2'],
+    ['Tech Lead: liderança técnica e alinhamento entre engenharia e negócio', 12, '2026-06-10', 'techlead-lideranca-tecnica'],
+    ['Autoliderança: planejando o desenvolvimento pessoal', 8, '2026-06-11', 'autolideranca-planejando-desenvolvimento-pessoal'],
+    ['Design Thinking: resolva problemas com inovação e colaboração', 8, '2026-09-17', 'design-thinking-resolva-problemas-inovacao-colaboracao'],
+    ['Equipes ágeis: organizando os papéis em uma equipe', 8, '2026-09-13', 'equipes-ageis-organizando-papeis-equipe'],
+    ['Feedback efetivo: utilizando ferramentas para comunicação transformadora', 8, '2026-09-06', 'feedback-efetivo-ferramentas-comunicacao-transformadora'],
+    ['Gestão de Processos: mapeamento e automação com Lean e RPA', 8, '2026-09-12', 'gestao-processos-mapeamento-automacao-lean-rpa'],
+    ['JS na web: CRUD com JavaScript assíncrono', 8, '2022-10-25', 'javascript-crud-assincrono'],
+    ['Perfis de Liderança: estratégias e autoconhecimento para uma gestão eficaz', 8, '2026-09-05', 'perfis-lideranca-estrategias-gestao'],
+    ['Carreira .NET: boas-vindas e primeiros passos', 2, '2026-03-07', 'carreira-dotnet-boas-vindas'],
+    ['Carreira Liderança: boas-vindas e primeiros passos', 2, '2026-02-23', 'carreira-lideranca-boas-vindas'],
+  ]},
+  { id: 'ai', k: 'ai', name: { pt: 'Inteligência artificial', en: 'Artificial intelligence', es: 'Inteligencia artificial' }, items: [
+    ['Liderança na era da IA: fundamentos e visão estratégica', 10, '2026-09-04', 'lideranca-na-era-ia'],
+    ['IA: explorando o potencial da inteligência artificial generativa', 8, '2026-09-15', 'ia-explorando-potencial-inteligencia-artificial-generativa'],
+    ['Pensamento computacional: fundamentos da computação e lógica de programação', 8, '2026-06-11', 'computacao-fundamentos-computacao-pensamento-computacional'],
+  ]},
+];
+
+/* Cursos da Udemy (concluídos). k = cor do card, igual aos chips. */
+const UDEMY = [
+  { title: 'Desenvolvimento Web Completo 2022 - 20 cursos + 20 projetos', by: 'Jorge Sant Ana, Jamilton Damasceno',
+    hours: 126.5, date: '2022-10-06', k: 'front', cert: 'https://www.udemy.com/certificate/UC-8a445671-4bc4-4524-854f-75d19ffca430/',
+    summary: {
+      pt: 'Formação web completa do zero: HTML, CSS, Bootstrap, JavaScript moderno, PHP com orientação a objetos, MySQL, Ajax, jQuery, MVC, APIs e apps com Ionic, construindo 20 projetos práticos.',
+      en: 'A complete web track from scratch: HTML, CSS, Bootstrap, modern JavaScript, object-oriented PHP, MySQL, Ajax, jQuery, MVC, APIs and Ionic apps, building 20 hands-on projects.',
+      es: 'Formación web completa desde cero: HTML, CSS, Bootstrap, JavaScript moderno, PHP orientado a objetos, MySQL, Ajax, jQuery, MVC, APIs y apps con Ionic, construyendo 20 proyectos prácticos.' } },
+  { title: 'Curso completo de Modelagem de Banco de Dados na prática', by: 'Miriam de Almeida Lima',
+    hours: 12.5, date: '2025-10-08', k: 'data', cert: 'https://www.udemy.com/certificate/UC-11d4ae82-df77-4802-bd18-719d23095e07/',
+    summary: {
+      pt: 'Como modelar um banco de dados do zero e com qualidade: modelos conceitual, lógico e físico, cardinalidade, normalização e SQL, com muitos exercícios resolvidos.',
+      en: 'How to model a database from scratch with quality: conceptual, logical and physical models, cardinality, normalization and SQL, with many solved exercises.',
+      es: 'Cómo modelar una base de datos desde cero y con calidad: modelos conceptual, lógico y físico, cardinalidad, normalización y SQL, con muchos ejercicios resueltos.' } },
+  { title: 'Azure Pipelines - CI/CD, Docker e Kubernetes no Azure DevOps', by: 'Higor Barbosa',
+    hours: 18, date: '2025-08-30', k: 'cloud', cert: 'https://www.udemy.com/certificate/UC-3c972d57-15e4-49d9-8620-7b8359e5f7b8/',
+    summary: {
+      pt: 'Integração e entrega contínuas no Azure DevOps: pipelines em YAML, estratégias de deploy como canary e blue/green, testes e SonarQube no pipeline, Docker, Kubernetes no AKS e infraestrutura como código com Terraform.',
+      en: 'Continuous integration and delivery on Azure DevOps: YAML pipelines, deployment strategies such as canary and blue/green, tests and SonarQube in the pipeline, Docker, Kubernetes on AKS and infrastructure as code with Terraform.',
+      es: 'Integración y entrega continuas en Azure DevOps: pipelines en YAML, estrategias de deploy como canary y blue/green, pruebas y SonarQube en el pipeline, Docker, Kubernetes en AKS e infraestructura como código con Terraform.' } },
+];
+
+// Totais somando Alura + Udemy (usados no topo e no currículo)
+const ALURA_COUNT = () => sum(COURSES, c => c.items.length);
+const ALURA_HOURS = () => sum(COURSES, c => sum(c.items, i => i[1]));
+const ALL_COUNT = () => ALURA_COUNT() + UDEMY.length;
+const ALL_HOURS = () => ALURA_HOURS() + sum(UDEMY, u => u.hours);
+
+/* Livros — k = cor da capa (mesmas cores dos chips).
+   reading: lendo agora · read: já lidos, do MAIS RECENTE para o mais antigo · next: fila, na ordem em que vou ler */
+const BOOKS = {
+  reading: [
+    { title: 'Criando Microsserviços', subtitle: 'Projetando sistemas com componentes menores e mais especializados', author: 'Sam Newman', k: 'int',
+      summary: { pt: 'Como decompor sistemas em serviços, com os critérios que justificam a separação e os custos que ela traz: integração, dados, deploy, testes, observabilidade e segurança.',
+                 en: 'How to decompose systems into services, with the criteria that justify the split and the costs it brings: integration, data, deployment, testing, observability and security.',
+                 es: 'Cómo descomponer sistemas en servicios, con los criterios que justifican la separación y los costos que conlleva: integración, datos, despliegue, pruebas, observabilidad y seguridad.' } },
+  ],
+  read: [
+    { title: 'Domain Storytelling', subtitle: 'Um modo ágil, visual e colaborativo de criar softwares baseados em domínio', author: 'Stefan Hofer e Henning Schwentner', k: 'arch',
+      summary: { pt: 'Técnica visual e colaborativa para entender o domínio junto com especialistas do negócio, transformando histórias reais em modelos e requisitos.',
+                 en: 'A visual, collaborative technique to understand the domain with business experts, turning real stories into models and requirements.',
+                 es: 'Técnica visual y colaborativa para entender el dominio junto a expertos del negocio, transformando historias reales en modelos y requisitos.' } },
+    { title: 'The Art of Unit Testing', subtitle: 'With examples in .NET', author: 'Roy Osherove', k: 'test',
+      summary: { pt: 'Como escrever testes de unidade legíveis, confiáveis e fáceis de manter em .NET, com stubs, mocks, isolamento e boa organização da suíte.',
+                 en: 'How to write readable, trustworthy and maintainable unit tests in .NET, with stubs, mocks, isolation and a well-organized suite.',
+                 es: 'Cómo escribir pruebas unitarias legibles, confiables y fáciles de mantener en .NET, con stubs, mocks, aislamiento y una suite bien organizada.' } },
+    { title: 'Aprenda Domain-Driven Design', subtitle: 'Alinhando arquitetura de software e estratégias de negócios', author: 'Vlad Khononov', k: 'arch',
+      summary: { pt: 'DDD na prática: subdomínios, contextos delimitados, padrões táticos e como ligar decisões de arquitetura à estratégia do negócio.',
+                 en: 'DDD in practice: subdomains, bounded contexts, tactical patterns and how to tie architecture decisions to business strategy.',
+                 es: 'DDD en la práctica: subdominios, contextos delimitados, patrones tácticos y cómo conectar las decisiones de arquitectura con la estrategia del negocio.' } },
+    { title: 'O Programador Pragmático', subtitle: 'De aprendiz a mestre', author: 'Andrew Hunt e David Thomas', k: 'back',
+      summary: { pt: 'Princípios práticos para escrever software melhor e evoluir na carreira: DRY, ortogonalidade, automação, testes e responsabilidade sobre o próprio código.',
+                 en: 'Practical principles for writing better software and growing your career: DRY, orthogonality, automation, testing and ownership of your code.',
+                 es: 'Principios prácticos para escribir mejor software y crecer en la carrera: DRY, ortogonalidad, automatización, pruebas y responsabilidad sobre el propio código.' } },
+    { title: 'Gestão de Alta Performance', subtitle: 'High Output Management', author: 'Andrew S. Grove', k: 'tools',
+      summary: { pt: 'O clássico do ex-CEO da Intel sobre gestão como alavanca: reuniões, 1:1s, tomada de decisão, planejamento e como medir o resultado de um time.',
+                 en: 'The former Intel CEO’s classic on management as leverage: meetings, 1:1s, decision-making, planning and measuring a team’s output.',
+                 es: 'El clásico del ex CEO de Intel sobre la gestión como palanca: reuniones, 1:1, toma de decisiones, planificación y cómo medir el resultado de un equipo.' } },
+    { title: 'Os Primeiros 90 Dias', subtitle: 'Estratégias de sucesso para novos líderes', author: 'Michael Watkins', k: 'tools',
+      summary: { pt: 'Como assumir uma nova posição de liderança: entender o contexto, conquistar vitórias rápidas e alinhar expectativas nos primeiros três meses.',
+                 en: 'How to step into a new leadership role: read the context, secure early wins and align expectations in the first three months.',
+                 es: 'Cómo asumir un nuevo rol de liderazgo: entender el contexto, lograr victorias rápidas y alinear expectativas en los primeros tres meses.' } },
+    { title: 'A Psicologia Financeira', subtitle: 'Lições atemporais sobre fortuna, ganância e felicidade', author: 'Morgan Housel', k: 'data',
+      summary: { pt: 'Por que decisões sobre dinheiro dependem mais de comportamento do que de conhecimento técnico, em histórias curtas sobre risco, paciência e juros compostos.',
+                 en: 'Why money decisions depend more on behavior than on technical knowledge, told through short stories about risk, patience and compounding.',
+                 es: 'Por qué las decisiones sobre dinero dependen más del comportamiento que del conocimiento técnico, en historias cortas sobre riesgo, paciencia e interés compuesto.' } },
+  ],
+  next: [
+    { title: 'Fundamentos da Arquitetura de Software', subtitle: 'Uma abordagem moderna de engenharia', author: 'Mark Richards e Neal Ford', k: 'arch',
+      summary: { pt: 'O papel do arquiteto de ponta a ponta: características arquiteturais, estilos como camadas, microsserviços e orientado a eventos, e como decidir e documentar.',
+                 en: 'The architect’s role end to end: architecture characteristics, styles such as layered, microservices and event-driven, and how to decide and document.',
+                 es: 'El rol del arquitecto de punta a punta: características arquitectónicas, estilos como capas, microservicios y orientado a eventos, y cómo decidir y documentar.' } },
+    { title: 'Arquitetura Limpa', subtitle: 'O guia do artesão para estrutura e design de software', author: 'Robert C. Martin', k: 'arch',
+      summary: { pt: 'Como organizar sistemas em camadas independentes de frameworks e banco de dados, com SOLID, componentes e a regra de dependência.',
+                 en: 'How to organize systems into layers independent of frameworks and databases, with SOLID, components and the dependency rule.',
+                 es: 'Cómo organizar sistemas en capas independientes de frameworks y bases de datos, con SOLID, componentes y la regla de dependencia.' } },
+    { title: 'Código Limpo', subtitle: 'Habilidades práticas do Agile Software', author: 'Robert C. Martin', k: 'back',
+      summary: { pt: 'Boas práticas para escrever código legível e fácil de manter: nomes, funções, comentários, tratamento de erros e refatoração.',
+                 en: 'Good practices for readable, maintainable code: naming, functions, comments, error handling and refactoring.',
+                 es: 'Buenas prácticas para escribir código legible y fácil de mantener: nombres, funciones, comentarios, manejo de errores y refactorización.' } },
+    { title: 'Projetando Aplicações com Uso Intensivo de Dados', subtitle: 'Os pilares para construir sistemas confiáveis, escaláveis e fáceis de manter', author: 'Martin Kleppmann e Chris Riccomini', k: 'data',
+      summary: { pt: 'Os fundamentos de sistemas de dados confiáveis e escaláveis: modelos de dados, armazenamento, replicação, particionamento, transações e processamento em stream.',
+                 en: 'The foundations of reliable, scalable data systems: data models, storage, replication, partitioning, transactions and stream processing.',
+                 es: 'Los fundamentos de sistemas de datos confiables y escalables: modelos de datos, almacenamiento, replicación, particionamiento, transacciones y procesamiento en stream.' } },
+    { title: 'SQL para Análise de Dados', subtitle: 'Técnicas avançadas para transformar dados em insights', author: 'Cathy Tanimura', k: 'data',
+      summary: { pt: 'SQL avançado aplicado à análise: séries temporais, coortes, análise de texto, detecção de anomalias e experimentos.',
+                 en: 'Advanced SQL for analysis: time series, cohorts, text analysis, anomaly detection and experiments.',
+                 es: 'SQL avanzado aplicado al análisis: series temporales, cohortes, análisis de texto, detección de anomalías y experimentos.' } },
+    { title: 'Docker Deep Dive', subtitle: 'Zero to Docker in a single book', author: 'Nigel Poulton', k: 'cloud',
+      summary: { pt: 'Docker do básico ao avançado: imagens, containers, redes, volumes, Compose e segurança, com foco no uso prático.',
+                 en: 'Docker from basics to advanced: images, containers, networking, volumes, Compose and security, with a practical focus.',
+                 es: 'Docker de lo básico a lo avanzado: imágenes, contenedores, redes, volúmenes, Compose y seguridad, con foco práctico.' } },
+  ],
+};
+
+
+/* Categoria de cada stack: define a cor do chip e da barra. Chave = nome em português. */
+const CATEGORY = {
+  back: ['C#', '.NET', '.NET 8', 'ASP.NET MVC', 'Dapper', 'Middlewares e injeção de dependência', 'Node.js', 'PHP', 'Java', 'Entity Framework', 'Serverless', 'Serverless Functions', 'Quartz', 'APIs REST'],
+  front: ['Gráficos e visualização de dados', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'React Native', 'Vite', 'Redux', 'HTML', 'CSS', 'Tailwind', 'Bootstrap'],
+  data: ['Elasticsearch', 'SQL Server', 'PostgreSQL', 'MySQL', 'MongoDB', 'Queries e procedures', 'Modelagem de dados'],
+  arch: ['Clean Architecture', 'Microsserviços', 'LGPD e privacidade de dados', 'CQRS', 'DDD', 'Hexagonal', 'Camadas', 'Orientada a eventos', 'Arquitetura hexagonal', 'Arquitetura em camadas', 'Arquitetura orientada a eventos', 'Clean Code'],
+  int: ['MassTransit', 'Azure Service Bus', 'Kong API Gateway', 'RabbitMQ', 'Filas', 'Integração entre sistemas internos e externos', 'Google Maps', 'Google Maps API'],
+  test: ['TDD', 'BDD', 'Testes de integração', 'Testes de carga', 'XUnit', 'Vitest', 'Cobertura de testes', 'Code review'],
+  obs: ['Zabbix', 'Prometheus', 'Grafana', 'Datadog', 'New Relic', 'OpenTelemetry', 'Log estruturado e auditoria'],
+  tools: ['Escrita de requisitos funcionais e não funcionais', 'Gestão de times e projetos', 'Plannings técnicas', 'Git e GitFlow', 'GitFlow', 'GitHub', 'Bitbucket', 'Jira', 'Visual Studio', 'Visual Studio Code', 'Scrum', 'Kanban'],
+  cloud: ['Microsoft Azure (Functions, API Management, Service Bus, AKS)', 'Microsoft Azure', 'Azure Functions', 'Azure API Management', 'AKS', 'Azure DevOps', 'Amazon AWS (ECS, ECR)', 'Docker', 'Kubernetes', 'Linux', 'GitHub Actions', 'Bitbucket Pipelines'],
+  ai: ['Cursor', 'Claude', 'Codex', 'GitHub Copilot', 'ChatGPT', 'Agentes de IA', 'Desenvolvimento assistido por IA'],
+};
+
+/* ===================================================================== */
+
+const UI = {
+  skip: { pt: 'Pular para o conteúdo', en: 'Skip to content', es: 'Saltar al contenido' },
+  nav: {
+    sobre: { pt: 'Quem sou', en: 'About', es: 'Sobre mí' },
+    experiencia: { pt: 'Experiência', en: 'Experience', es: 'Experiencia' },
+    stacks: { pt: 'Stacks e habilidades', en: 'Stacks & skills', es: 'Stacks y habilidades' },
+    gestao: { pt: 'Gestão', en: 'Management', es: 'Gestión' },
+    formacao: { pt: 'Formação', en: 'Education', es: 'Formación' },
+    cursos: { pt: 'Cursos', en: 'Courses', es: 'Cursos' },
+    idiomas: { pt: 'Idiomas', en: 'Languages', es: 'Idiomas' },
+    livros: { pt: 'Livros', en: 'Books', es: 'Libros' },
+    contato: { pt: 'Contato', en: 'Contact', es: 'Contacto' },
+  },
+  theme: { pt: 'Alternar tema claro/escuro', en: 'Toggle light/dark theme', es: 'Cambiar tema claro/oscuro' },
+  langLabel: { pt: 'Idioma', en: 'Language', es: 'Idioma' },
+  tagline: { pt: 'Desenho a <em>arquitetura</em> antes da primeira linha de código.', en: 'I design the <em>architecture</em> before the first line of code.', es: 'Diseño la <em>arquitectura</em> antes de la primera línea de código.' },
+  ctaContact: { pt: 'Entrar em contato', en: 'Get in touch', es: 'Contactar' },
+  statDev: { pt: 'como desenvolvedor full stack de software', en: 'as a full stack software developer', es: 'como desarrollador full stack de software' },
+  statDevNote: { pt: 'Programo desde o início da faculdade, em {dev}, e atuo profissionalmente desde {pro}.', en: 'Coding since the start of college in {dev}, working professionally since {pro}.', es: 'Programo desde el inicio de la facultad, en {dev}, y trabajo profesionalmente desde {pro}.' },
+  statHours: { pt: 'de carga horária somada em {n} cursos concluídos (Alura e Udemy)', en: 'of combined workload across {n} completed courses (Alura and Udemy)', es: 'de carga horaria sumada en {n} cursos completados (Alura y Udemy)' },
+  eduDone: { pt: 'Formado', en: 'Graduated', es: 'Graduado' },
+  eduNow: { pt: 'Cursando', en: 'In progress', es: 'Cursando' },
+  statProj: { pt: 'Sustentação e novos projetos', en: 'Maintenance & new projects', es: 'Sostenimiento y nuevos proyectos' },
+  statProjSub: { pt: 'participação ativa na evolução de sistemas em produção e na criação de projetos do zero', en: 'actively evolving systems in production and building new projects from scratch', es: 'participación activa en la evolución de sistemas en producción y en la creación de proyectos desde cero' },
+  statCourses: { pt: 'cursos concluídos', en: 'courses completed', es: 'cursos completados' },
+  aboutSub: { pt: 'Da tela à arquitetura.', en: 'From screens to architecture.', es: 'De la pantalla a la arquitectura.' },
+  expSub: { pt: 'Da mais recente para a mais antiga. Durações calculadas automaticamente.', en: 'Most recent first. Durations are calculated automatically.', es: 'De la más reciente a la más antigua. Duraciones calculadas automáticamente.' },
+  current: { pt: 'atual', en: 'present', es: 'actualidad' },
+  work: { pt: 'Atuação', en: 'What I did', es: 'Actuación' },
+  impact: { pt: 'Impacto', en: 'Impact', es: 'Impacto' },
+  stacksSub: { pt: 'Tempo de experiência com cada stack, calculado em tempo real a partir de quando comecei a usá-la. O que ainda é só estudo está sinalizado.', en: 'Experience with each stack, calculated live from when I started using it. Study-only items are flagged.', es: 'Tiempo de experiencia con cada stack, calculado en tiempo real desde que empecé a usarla. Lo que aún es solo estudio está señalado.' },
+  tagStudy: { pt: 'Apenas estudo', en: 'Study only', es: 'Solo estudio' },
+  tagAcademic: { pt: 'estudos teóricos e aplicações em ambientes acadêmicos, sem uso profissional', en: 'theoretical study and academic projects, no professional use', es: 'estudios teóricos y aplicaciones en entornos académicos, sin uso profesional' },
+  aiTitle: { pt: 'IA no dia a dia', en: 'AI in my daily work', es: 'IA en el día a día' },
+  aiSub: { pt: 'Ferramentas que uso ativamente no desenvolvimento, desde {y}.', en: 'Tools I actively use in development, since {y}.', es: 'Herramientas que uso activamente en el desarrollo, desde {y}.' },
+  aiActive: { pt: 'Uso ativo', en: 'Active use', es: 'Uso activo' },
+  mgmtTitle: { pt: 'Gestão e metodologias', en: 'Management & methodologies', es: 'Gestión y metodologías' },
+  mgmtSub: { pt: 'Conhecimento de gestão de times, processos e requisitos.', en: 'Team management, process and requirements know-how.', es: 'Conocimiento de gestión de equipos, procesos y requisitos.' },
+  since2: { pt: 'desde', en: 'since', es: 'desde' },
+  lgWork: { pt: 'Uso profissional', en: 'Professional use', es: 'Uso profesional' },
+  lgStudy: { pt: 'Estudo', en: 'Study', es: 'Estudio' },
+  time: { pt: 'Linha do tempo', en: 'Timeline', es: 'Línea de tiempo' },
+  duration: { pt: 'Tempo', en: 'Time', es: 'Tiempo' },
+  status: { pt: 'Status', en: 'Status', es: 'Estado' },
+  st: { on: { pt: 'Em uso', en: 'In use', es: 'En uso' }, off: { pt: 'Fora de uso', en: 'Not in use', es: 'Sin uso' }, study: { pt: 'Estudando', en: 'Studying', es: 'Estudiando' } },
+  studyOnly: { pt: 'estudo desde', en: 'studying since', es: 'estudio desde' },
+  academic: { pt: 'Apenas estudos teóricos e aplicações em ambientes acadêmicos', en: 'Theoretical study and academic projects only', es: 'Solo estudios teóricos y aplicaciones en entornos académicos' },
+  proDaily: { pt: 'Uso profissional no dia a dia', en: 'Used professionally day to day', es: 'Uso profesional en el día a día' },
+  noPro: { pt: 'sem uso profissional', en: 'no professional use', es: 'sin uso profesional' },
+  inUse: { pt: 'em uso profissional', en: 'in professional use', es: 'en uso profesional' },
+  hard: 'Hard skills', soft: 'Soft skills',
+  eduHelping: { pt: 'O que estou aprendendo e como isso me torna um dev melhor', en: 'What I am learning and how it makes me a better developer', es: 'Lo que estoy aprendiendo y cómo me hace un mejor desarrollador' },
+  eduHelped: { pt: 'O que fiz e como me ajudou a ser um dev melhor', en: 'What I did and how it made me a better developer', es: 'Lo que hice y cómo me ayudó a ser un mejor desarrollador' },
+  cvBtn: { pt: 'Baixar currículo (PDF)', en: 'Download resume (PDF)', es: 'Descargar currículum (PDF)' },
+  cv: {
+    summary: { pt: 'Resumo profissional', en: 'Professional summary', es: 'Resumen profesional' },
+    skills: { pt: 'Habilidades técnicas', en: 'Technical skills', es: 'Habilidades técnicas' },
+    exp: { pt: 'Experiência profissional', en: 'Professional experience', es: 'Experiencia profesional' },
+    edu: { pt: 'Formação acadêmica', en: 'Education', es: 'Formación académica' },
+    courses: { pt: 'Certificações e cursos', en: 'Certifications and training', es: 'Certificaciones y cursos' },
+    location: { pt: 'São Paulo – SP, Brasil', en: 'São Paulo – SP, Brazil', es: 'São Paulo – SP, Brasil' },
+    present: { pt: 'Atual', en: 'Present', es: 'Actual' },
+    certs: { pt: 'certificados', en: 'certificates', es: 'certificados' },
+    hours: { pt: 'horas', en: 'hours', es: 'horas' },
+    paths: { pt: 'Formações em', en: 'Learning paths in', es: 'Formaciones en' },
+    continuous: { pt: 'Formação contínua cobrindo todo o meu stack', en: 'Continuous training covering my full stack', es: 'Formación continua que cubre todo mi stack' },
+    continuousTail: { pt: 'testes automatizados, Git/GitFlow, arquitetura de software e metodologias ágeis', en: 'automated testing, Git/GitFlow, software architecture and agile methodologies', es: 'pruebas automatizadas, Git/GitFlow, arquitectura de software y metodologías ágiles' },
+    // Categorias na mesma ordem do currículo original. hard = índices de HARD; extra = outras listas do site
+    groups: [
+      [{ pt: 'Frontend', en: 'Frontend', es: 'Frontend' }, [2]],
+      [{ pt: 'Backend', en: 'Backend', es: 'Backend' }, [1]],
+      [{ pt: 'Mensageria e Integração', en: 'Messaging and Integration', es: 'Mensajería e Integración' }, [4]],
+      [{ pt: 'Arquitetura e Práticas', en: 'Architecture and Practices', es: 'Arquitectura y Prácticas' }, [0]],
+      [{ pt: 'Banco de Dados', en: 'Databases', es: 'Bases de Datos' }, [3]],
+      [{ pt: 'Testes e Qualidade', en: 'Testing and Quality', es: 'Pruebas y Calidad' }, [6]],
+      [{ pt: 'Observabilidade', en: 'Observability', es: 'Observabilidad' }, [7]],
+      [{ pt: 'Ferramentas e Metodologias', en: 'Tools and Methodologies', es: 'Herramientas y Metodologías' }, [8, 5, 9], 'mgmt'],
+    ],
+    langs: { pt: 'Idiomas', en: 'Languages', es: 'Idiomas' },
+  },
+  moreStacks: { pt: 'Ver mais (outras {n} stacks)', en: 'See more ({n} other stacks)', es: 'Ver más (otras {n} stacks)' },
+  showLess: { pt: 'Ver menos', en: 'Show less', es: 'Ver menos' },
+  langsSub: { pt: 'Idiomas que uso no trabalho e nos estudos.', en: 'Languages I use at work and in my studies.', es: 'Idiomas que uso en el trabajo y en los estudios.' },
+  otherSkills: { pt: 'Outras habilidades', en: 'Other skills', es: 'Otras habilidades' },
+  eduSub: { pt: 'Formação acadêmica e estudo em andamento.', en: 'Academic background and ongoing study.', es: 'Formación académica y estudio en curso.' },
+  progress: { pt: 'Em andamento', en: 'In progress', es: 'En curso' },
+  done: { pt: 'Concluído', en: 'Completed', es: 'Concluido' },
+  develops: { pt: 'O que a formação desenvolve', en: 'What the program develops', es: 'Lo que desarrolla la formación' },
+  syllabus: { pt: 'Ementa completa do programa', en: 'Full program syllabus', es: 'Programa completo' },
+  built: { pt: 'O que a graduação construiu', en: 'What the degree built', es: 'Lo que construyó la carrera' },
+  ongoing: { pt: 'Estudo em andamento', en: 'Ongoing study', es: 'Estudio en curso' },
+  modules: { pt: 'módulos', en: 'modules', es: 'módulos' },
+  stagesL: { pt: 'etapas', en: 'stages', es: 'etapas' },
+  since: { pt: 'desde', en: 'since', es: 'desde' },
+  approx: { pt: 'cerca de', en: 'about', es: 'cerca de' },
+  coursesSub: { pt: 'Certificados da Alura agrupados por área e cursos da Udemy.', en: 'Alura certificates grouped by area, plus Udemy courses.', es: 'Certificados de Alura agrupados por área y cursos de Udemy.' },
+  certs: { pt: 'certificados', en: 'certificates', es: 'certificados' },
+  certsAlura: { pt: 'certificados na Alura', en: 'Alura certificates', es: 'certificados en Alura' },
+  courses: { pt: 'cursos', en: 'courses', es: 'cursos' },
+  hours: { pt: 'horas de estudo', en: 'hours of study', es: 'horas de estudio' },
+  areas: { pt: 'áreas', en: 'areas', es: 'áreas' },
+  seeAll: { pt: 'Ver todos', en: 'See all', es: 'Ver todos' },
+  hide: { pt: 'Ocultar', en: 'Hide', es: 'Ocultar' },
+  cert: { pt: 'certificado', en: 'certificate', es: 'certificado' },
+  others: { pt: 'Outras formações', en: 'Other training', es: 'Otras formaciones' },
+  booksSub: { pt: 'O que estou lendo, o que já li e o que vem a seguir.', en: 'What I am reading, what I have read and what comes next.', es: 'Lo que estoy leyendo, lo que ya leí y lo que viene.' },
+  reading: { pt: 'Lendo agora', en: 'Reading now', es: 'Leyendo ahora' },
+  readL: { pt: 'Já lidos', en: 'Already read', es: 'Ya leídos' },
+  booksCount: { pt: '{n} livros', en: '{n} books', es: '{n} libros' },
+  prev: { pt: 'Anterior', en: 'Previous', es: 'Anterior' },
+  next: { pt: 'Próximo', en: 'Next', es: 'Siguiente' },
+  nextL: { pt: 'Na fila de leitura', en: 'Reading queue', es: 'En la fila de lectura' },
+  contactSub: { pt: 'Vamos conversar.', en: 'Let’s talk.', es: 'Hablemos.' },
+  contactText: { pt: 'O caminho mais rápido é o e-mail ou o WhatsApp.', en: 'The fastest way to reach me is email or WhatsApp.', es: 'La forma más rápida de contactarme es por correo o WhatsApp.' },
+  email: { pt: 'E-mail', en: 'Email', es: 'Correo' },
+  top: { pt: 'Voltar ao topo', en: 'Back to top', es: 'Volver arriba' },
+};
+
+const MONTHS = {
+  pt: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+};
+const HTML_LANG = { pt: 'pt-BR', en: 'en', es: 'es' };
+const LANGS = ['pt', 'en', 'es'];
+const LANG_NAME = { pt: 'Português', en: 'English', es: 'Español' };
+const usStripes = Array.from({ length: 7 }, (_, i) => `<rect y="${(i * 2 * 20 / 13).toFixed(2)}" width="28" height="1.54" fill="#b22234"/>`).join('');
+const FLAG = {
+  pt: '<svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" fill="#009c3b"/><path d="M14 2.6 25.4 10 14 17.4 2.6 10z" fill="#ffdf00"/><circle cx="14" cy="10" r="4.4" fill="#002776"/><path d="M9.8 9.2c2.8-.6 5.9-.1 8.3 1.4" stroke="#fff" stroke-width=".8" fill="none"/></svg>',
+  en: `<svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" fill="#fff"/>${usStripes}<rect width="12" height="10.77" fill="#3c3b6e"/></svg>`,
+  es: '<svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" fill="#aa151b"/><rect y="5" width="28" height="10" fill="#f1bf00"/></svg>',
+};
+
+/* ---------------- Estado ---------------- */
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} },
+};
+// Português é o padrão; só muda se o visitante escolheu outro idioma antes
+let lang = LANGS.includes(store.get('lang')) ? store.get('lang') : 'pt';
+
+/* ---------------- Utilitários ---------------- */
+const t = x => x == null ? '' : typeof x === 'string' ? x : (x[lang] ?? x.pt);
+const parseYM = s => { const [y, m] = s.split('-').map(Number); return { y, m }; };
+const now = () => new Date();
+
+// Meses decorridos desde o 1º dia de `start` até hoje (ou até o fim do mês `end`, inclusivo)
+function monthsBetween(start, end) {
+  const a = parseYM(start);
+  if (end) { const b = parseYM(end); return (b.y - a.y) * 12 + (b.m - a.m) + 1; }
+  const n = now();
+  return Math.max(0, (n.getFullYear() - a.y) * 12 + (n.getMonth() + 1 - a.m));
+}
+
+function fmtDur(mo) {
+  const y = Math.floor(mo / 12), m = mo % 12;
+  const W = {
+    pt: [n => n === 1 ? 'ano' : 'anos', n => n === 1 ? 'mês' : 'meses', ' e ', 'menos de 1 mês'],
+    en: [n => n === 1 ? 'year' : 'years', n => n === 1 ? 'month' : 'months', ', ', 'less than a month'],
+    es: [n => n === 1 ? 'año' : 'años', n => n === 1 ? 'mes' : 'meses', ' y ', 'menos de 1 mes'],
+  }[lang];
+  const parts = [];
+  if (y) parts.push(`${y} ${W[0](y)}`);
+  if (m) parts.push(`${m} ${W[1](m)}`);
+  return parts.length ? parts.join(W[2]) : W[3];
+}
+
+const fmtMonth = s => { const { y, m } = parseYM(s); return `${MONTHS[lang][m - 1]} ${y}`; };
+const fmtDay = s => { const [y, m, d] = s.split('-').map(Number); return `${String(d).padStart(2, '0')} ${MONTHS[lang][m - 1]} ${y}`; };
+const certUrl = slug => `https://cursos.alura.com.br/user/lucastrindade/course/${slug}/certificate?lang=pt_BR`;
+const sum = (arr, f) => arr.reduce((a, x) => a + f(x), 0);
+const fmtNum = n => n.toLocaleString(HTML_LANG[lang]);
+
+// Cores por tipo de stack
+const CAT_KEYS = Object.keys(CATEGORY);
+const catOf = x => { const n = typeof x === 'string' ? x : x.pt; return CAT_KEYS.find(k => CATEGORY[k].includes(n)) || ''; };
+const catRank = x => { const i = CAT_KEYS.indexOf(catOf(x)); return i < 0 ? CAT_KEYS.length : i; };
+const byCat = list => [...list].sort((a, b) => catRank(a) - catRank(b));
+const usedAt = (where, code) => (where || '').split(' ').includes(code);
+// Chips de uma experiência ou formação: tudo que está marcado com o código dela
+const stacksAt = code => byCat([
+  ...STACKS.flatMap(g => g.items).filter(i => usedAt(i[3], code)).map(i => i[0]),
+  ...(usedAt(AI_TOOLS.where, code) ? AI_TOOLS.items.map(a => a[0]) : []),
+  ...MGMT.filter(m => usedAt(m[2], code)).map(m => m[0]),
+]);
+const SHOWN = 6;
+const expanded = new Set(); // listas abertas, preservadas ao trocar de idioma
+const moreBtn = (id, n) => `<button type="button" class="more-btn" data-more="${id}" aria-expanded="${expanded.has(id)}">
+  <span class="show">${t(UI.moreStacks).replace('{n}', n)}</span><span class="hide">${t(UI.showLess)}</span>${ICON.down}</button>`;
+// Chips com os destaques primeiro; o resto fica escondido até clicar em "ver mais"
+function chipList(id, items, featured = []) {
+  const ptName = x => typeof x === 'string' ? x : x.pt;
+  const top = featured.map(f => items.find(i => ptName(i) === f)).filter(Boolean);
+  const first = [...top, ...items.filter(i => !top.includes(i))].slice(0, SHOWN);
+  const rest = items.filter(i => !first.includes(i));
+  return `<div class="collapsible${expanded.has(id) ? ' open' : ''}" id="${id}">
+    <ul class="chips" aria-label="Stacks">${first.map(chip).join('')}${rest.map(x => chip(x).replace('<li class="chip"', '<li class="chip more"')).join('')}</ul>
+    ${rest.length ? moreBtn(id, rest.length) : ''}
+  </div>`;
+}
+const chip = x => { const k = catOf(x); return `<li class="chip"${k ? ` data-k="${k}"` : ''}>${t(x)}</li>`; };
+
+const ICON = {
+  sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+  cap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/><path d="M22 10v6"/></svg>',
+  spark: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c.4 3.9 1.6 6.4 3.4 7.9 1.5 1.3 3.6 1.9 6.1 2.1-3.9.4-6.4 1.6-7.9 3.4-1.3 1.5-1.9 3.6-2.1 6.1-.4-3.9-1.6-6.4-3.4-7.9-1.5-1.3-3.6-1.9-6.1-2.1 3.9-.4 6.4-1.6 7.9-3.4 1.3-1.5 1.9-3.6 2.1-6.1z"/></svg>',
+  download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>',
+  check: '<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>',
+  arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>',
+  github: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg>',
+  whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.86 9.86 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41"/></svg>',
+};
+
+/* ---------------- Render ---------------- */
+// Atraso escalonado das animações de entrada (limitado para listas longas)
+const d = i => `style="--d:${Math.min(i, 8) * 60}ms"`;
+// Tópico da experiência: texto ou [destaque, resto]; {start}, {end} e chaves de j.dates viram datas formatadas
+function jobItem(j, w, html = true, fmt = fmtMonth) {
+  const fill = x => x.replace(/\{(\w+)\}/g, (m, k) => {
+    const v = k === 'start' ? j.start : k === 'end' ? j.end : j.dates?.[k];
+    return v ? fmt(v) : m;
+  });
+  const v = t(w);
+  if (Array.isArray(v)) return html ? `<b>${fill(v[0])}</b> ${fill(v[1])}` : `${fill(v[0])} ${fill(v[1])}`;
+  return fill(v);
+}
+const secHead = (n, key, sub, title) => `<header class="sec-h rv"><span class="sec-n">${String(n).padStart(2, '0')}</span><h2>${t(title || UI.nav[key])}</h2>${sub ? `<p>${t(sub)}</p>` : ''}</header>`;
+
+function renderLang() {
+  return `<div class="lang">
+    <button type="button" class="lang-btn" data-lang-btn aria-haspopup="listbox" aria-expanded="false" aria-label="${t(UI.langLabel)}: ${LANG_NAME[lang]}">
+      <span class="flag">${FLAG[lang]}</span><span class="lang-code">${lang.toUpperCase()}</span>${ICON.down}
+    </button>
+    <ul class="lang-menu" role="listbox" aria-label="${t(UI.langLabel)}" hidden>
+      ${LANGS.map(l => `<li role="option" tabindex="-1" data-lang="${l}" lang="${HTML_LANG[l]}" aria-selected="${l === lang}"><span class="flag">${FLAG[l]}</span><span>${LANG_NAME[l]}</span>${l === lang ? ICON.check : ''}</li>`).join('')}
+    </ul>
+  </div>`;
+}
+
+function renderNav() {
+  const dark = currentTheme() === 'dark';
+  return `<nav class="nav" aria-label="Principal"><div class="nav-in">
+    <a class="brand" href="#top">${PROFILE.first} ${PROFILE.last}</a>
+    <div class="links">${Object.keys(UI.nav).map(k => `<a href="#${k}" data-sec="${k}">${t(UI.nav[k])}</a>`).join('')}</div>
+    <div class="ctrls">
+      ${renderLang()}
+      <button type="button" class="icon-btn" data-theme-toggle aria-label="${t(UI.theme)}" title="${t(UI.theme)}">${dark ? ICON.sun : ICON.moon}</button>
+    </div>
+  </div><div class="progress" aria-hidden="true"><i></i></div></nav>`;
+}
+
+function renderHero() {
+  const stats = [
+    [fmtDur(monthsBetween(PROFILE.devStart)), t(UI.statDev), t(UI.statDevNote).replace('{dev}', fmtMonth(PROFILE.devStart)).replace('{pro}', fmtMonth(PROFILE.careerStart))],
+    [t(UI.statProj), t(UI.statProjSub)],
+    [`${fmtNum(ALL_HOURS())}h`, t(UI.statHours).replace('{n}', ALL_COUNT())],
+  ];
+  // Formação em destaque: concluída primeiro, depois a em andamento
+  const edu = [...EDUCATION].sort((a, b) => (a.status === 'done' ? 0 : 1) - (b.status === 'done' ? 0 : 1)).map(e => `<a href="#formacao">
+    <span class="ic">${ICON.cap}</span>
+    <span><small class="${e.status === 'done' ? '' : 'now'}">${t(e.status === 'done' ? UI.eduDone : UI.eduNow)}</small><b>${t(e.title)}</b><span>${e.inst}</span></span>
+  </a>`).join('');
+  return `<section class="hero wrap" id="top">
+    <div class="glow" aria-hidden="true"></div>
+    <p class="kicker a" style="--i:0"><span><span class="dot"></span>${t(PROFILE.location)}</span>${LANGUAGES.map(l => `<span class="klang"><span class="flag">${FLAG[l.flag]}</span>${t(l.name)} · ${t(l.levelName).toLowerCase()}</span>`).join('')}</p>
+    <h1 class="a" style="--i:1">${PROFILE.first}<br><span class="last">${PROFILE.last}</span></h1>
+    <p class="role a" style="--i:2"><strong>${t(PROFILE.title)}</strong>${PROFILE.stacks.map(x => ` <span class="sep">·</span> ${x}`).join('')}</p>
+    <div class="hero-edu a" style="--i:3">${edu}</div>
+    <p class="tagline a" style="--i:4">${t(UI.tagline)}</p>
+    <div class="cta a" style="--i:5">
+      <a class="btn primary" href="#contato">${t(UI.ctaContact)} ${ICON.arrow}</a>
+      <button type="button" class="btn" data-cv>${ICON.download} ${t(UI.cvBtn)}</button>
+      <a class="bbtn li" href="${PROFILE.linkedin}" target="_blank" rel="noopener">${ICON.linkedin} LinkedIn</a>
+    </div>
+    <div class="stats a" style="--i:6">${stats.map(([b, x, note]) => `<div class="stat"><b>${b}</b><span>${x}</span>${note ? `<em>${note}</em>` : ''}</div>`).join('')}</div>
+  </section>`;
+}
+
+function renderAbout() {
+  return `<section class="sec wrap" id="sobre">${secHead(2, 'sobre', UI.aboutSub)}
+    <div class="about">${t(ABOUT).map((p, i) => `<p class="rv" ${d(i)}>${p}</p>`).join('')}</div>
+  </section>`;
+}
+
+function renderJobs() {
+  const jobs = JOBS.map(j => {
+    const period = `${fmtMonth(j.start)} — ${j.end ? fmtMonth(j.end) : t(UI.current)}`;
+    return `<article class="job rv${j.end ? '' : ' current'}">
+      <div class="job-body">
+        <p class="job-meta">
+          <span class="when">${period}</span>
+          <span class="dur">${fmtDur(monthsBetween(j.start, j.end))}</span>
+          ${j.place ? `<span class="place">${j.place}</span>` : ''}
+        </p>
+        <h3>${j.company}</h3>
+        <p class="role-t">${t(j.role)}</p>
+        <p class="ctx">${t(j.context)}</p>
+        <h4 class="sub">${t(UI.work)}</h4>
+        <ul class="list">${j.work.map(w => `<li>${jobItem(j, w)}</li>`).join('')}</ul>
+        ${j.impact.length ? `<h4 class="sub">${t(UI.impact)}</h4><ul class="impact">${j.impact.map(i => { const [b, r] = i[lang] || i.pt; return `<li><b>${b}</b> ${r}</li>`; }).join('')}</ul>` : ''}
+        ${chipList(`chips-${j.code}`, stacksAt(j.code), j.featured)}
+      </div>
+    </article>`;
+  }).join('');
+  return `<section class="sec wrap" id="experiencia">${secHead(3, 'experiencia', UI.expSub)}<div class="jobs">${jobs}</div></section>`;
+}
+
+function renderStacks() {
+  // Barras alinhadas à esquerda, proporcionais ao tempo; a maior de todas ocupa a trilha inteira
+  const moOf = it => monthsBetween(it[1], it[4] || null);
+  const maxMo = Math.max(1, ...STACKS.flatMap(g => g.items.map(moOf)));
+  const kinds = new Set(STACKS.flatMap(g => g.items.map(i => i[2])));
+  const tag = (cls, txt) => `<span class="pill ${cls}">${t(txt)}</span>`;
+
+  const groups = STACKS.map(g => {
+    const rows = [...g.items].sort((a, b) => moOf(b) - moOf(a)).map((item, i) => {
+      const [name, since, kind, where, until] = item;
+      const k = catOf(name), mo = moOf(item);
+      const tags = kind === 'pro' ? '' : tag('study', UI.tagStudy);
+      const title = `${t(name)} · ${t(UI.since2)} ${fmtMonth(since)}${until ? ` — ${fmtMonth(until)}` : ''}`;
+      return `<div class="srow rv ${kind}" role="row"${k ? ` data-k="${k}"` : ''} ${d(i)}>
+        <span class="sname" role="cell">${t(name)}${tags ? `<span class="stags">${tags}</span>` : ''}</span>
+        <span class="track" role="cell" title="${title}"><span class="bar ${kind === 'pro' ? 'work' : 'study'}" style="width:${mo / maxMo * 100}%"></span></span>
+        <span class="sdur" role="cell">${fmtDur(mo)}<small>${until ? `${fmtMonth(since)} — ${fmtMonth(until)}` : `${t(UI.since2)} ${fmtMonth(since)}`}</small></span>
+      </div>`;
+    }).join('');
+    return `<div class="sgroup" role="table" aria-label="${t(g.name)}">
+      <div class="srow head rv" role="row"><h3 class="sub" role="columnheader">${t(g.name)}</h3></div>${rows}</div>`;
+  }).join('');
+
+  const legend = `<p class="legend rv"><span><i class="lg-work"></i>${t(UI.lgWork)}</span>${kinds.has('study') || kinds.has('academic') ? `<span><i class="lg-study"></i>${t(UI.tagStudy)}: ${t(UI.tagAcademic)}</span>` : ''}</p>`;
+
+  const ai = `<div class="ai-block">
+    <div class="ai-head rv"><h3 class="blk">${t(UI.aiTitle)}</h3><span class="pill on">${t(UI.aiActive)} · ${t(UI.since2)} ${AI_TOOLS.since}</span></div>
+    <p class="ai-sub rv">${t(UI.aiSub).replace('{y}', AI_TOOLS.since)}</p>
+    <ul class="ai-grid">${AI_TOOLS.items.map(([name, desc], i) => `<li class="ai-tile rv" data-k="ai" ${d(i)}>
+      <span class="ai-ic">${ICON.spark}</span><span><b>${t(name)}</b><span>${t(desc)}</span></span>
+    </li>`).join('')}</ul>
+  </div>`;
+
+  const skills = `<div class="skills-block">
+    <h3 class="blk rv">${t(UI.otherSkills)}</h3>
+    <div class="skills card rv">
+      <h4 class="sub">${UI.hard}</h4>
+      <ul class="hard">${HARD.map(([k, v]) => `<li><b>${t(k)}</b><ul class="chips">${v.map(chip).join('')}</ul></li>`).join('')}</ul>
+      <h4 class="sub soft-h">${UI.soft}</h4>
+      <ul class="chips soft">${SOFT.map(([k, v]) => `<li class="chip soft-chip" title="${t(v)}">${ICON.check}${t(k)}</li>`).join('')}</ul>
+    </div>
+  </div>`;
+
+  return `<section class="sec wrap" id="stacks">${secHead(4, 'stacks', UI.stacksSub)}
+    <div>
+      ${legend}
+      ${groups}
+      ${ai}
+      ${skills}
+    </div>
+  </section>`;
+}
+
+function renderMgmt() {
+  const items = [...MGMT].sort((a, b) => monthsBetween(b[1]) - monthsBetween(a[1]));
+  return `<section class="sec wrap" id="gestao">${secHead(5, 'gestao', UI.mgmtSub, UI.mgmtTitle)}
+    <ul class="mgmt">${items.map(([name, since], i) => `<li class="card rv" ${d(i)}>
+      <b>${t(name)}</b>
+      <span class="mdur">${fmtDur(monthsBetween(since))}</span>
+      <span class="msince">${t(UI.since2)} ${fmtMonth(since)}</span>
+    </li>`).join('')}</ul>
+  </section>`;
+}
+
+function renderLanguages() {
+  return `<section class="sec wrap" id="idiomas">${secHead(8, 'idiomas', UI.langsSub)}
+    <ul class="langs">${LANGUAGES.map((l, i) => `<li class="card rv" ${d(i)}>
+      <span class="flag big">${FLAG[l.flag]}</span>
+      <div>
+        <h3>${t(l.name)}</h3>
+        <p class="lvl"><span class="dots" aria-hidden="true">${[1, 2, 3, 4, 5].map(n => `<i class="${n <= l.level ? 'on' : ''}"></i>`).join('')}</span>${t(l.levelName)}</p>
+        <p class="ldesc">${t(l.desc)}</p>
+      </div>
+    </li>`).join('')}</ul>
+  </section>`;
+}
+
+function renderEducation() {
+  const cards = EDUCATION.map((e, i) => `<article class="card rv" ${d(i)}>
+    <div class="top">
+      <div><h3>${t(e.title)}</h3><p class="inst">${e.inst}</p></div>
+      <span class="pill ${e.status === 'done' ? 'on' : 'study'}">${t(UI[e.status])}</span>
+    </div>
+    <p class="meta">${e.years}${e.hours ? ` · ${e.approx ? '~' : ''}${fmtNum(e.hours)}h` : ''}</p>
+    ${e.lead ? `<h4 class="sub" style="margin-top:22px">${t(UI.develops)}</h4><p>${t(e.lead)}</p>` : ''}
+    <h4 class="sub" style="margin-top:22px">${t(e.status === 'done' ? UI.eduHelped : UI.eduHelping)}</h4>
+    <p class="edu-sum">${t(e.summary)}</p>
+    <h4 class="sub" style="margin-top:22px">Stacks</h4>
+    ${chipList(`chips-${e.code}`, stacksAt(e.code), e.featured)}
+  </article>`).join('');
+
+  const p = STUDY_PLAN;
+  const plan = `<article class="card rv">
+    <h4 class="sub">${t(UI.ongoing)}</h4>
+    <h3>${t(p.title)}</h3>
+    <div class="figs"><span>${p.modules} ${t(UI.modules)}</span><span>${p.stages} ${t(UI.stagesL)}</span><span>~${p.hours}h</span><span>${t(UI.since)} ${fmtMonth(p.since)}</span></div>
+    <ol class="stages">${p.list.map(s => `<li>${t(s)}</li>`).join('')}</ol>
+    <p class="note">${t(p.desc)}</p>
+  </article>`;
+
+  return `<section class="sec wrap" id="formacao">${secHead(6, 'formacao', UI.eduSub)}<div class="edu">${cards}${plan}</div></section>`;
+}
+
+function renderCourses() {
+  const totalCourses = sum(COURSES, c => c.items.length);
+  const totalHours = sum(COURSES, c => sum(c.items, i => i[1]));
+  const cats = COURSES.map((c, i) => {
+    const h = sum(c.items, x => x[1]);
+    return `<details class="cat rv" id="cat-${c.id}" data-k="${c.k}" ${d(i)}>
+      <summary>
+        <h3>${t(c.name)}</h3>
+        <span class="cmeta">${c.items.length} ${t(UI.certs)} · ${h}h</span>
+        <span class="toggle"><span class="show">${t(UI.seeAll)}</span><span class="hide">${t(UI.hide)}</span>${ICON.down}</span>
+      </summary>
+      <ul class="clist">${c.items.map(([title, hrs, date, slug]) => `<li>
+        <span>${title}</span>
+        <span class="cm"><span>${hrs}h</span>${date ? `<span>${fmtDay(date)}</span>` : ''}${slug ? `<a href="${certUrl(slug)}" target="_blank" rel="noopener">${t(UI.cert)} ↗</a>` : ''}</span>
+      </li>`).join('')}</ul>
+    </details>`;
+  }).join('');
+
+  const udemyHours = sum(UDEMY, u => u.hours);
+  const udemy = `<div class="cgroup">
+    <div class="cgroup-h rv"><h3 class="blk">Udemy</h3><span class="pill on">${UDEMY.length} ${t(UI.certs)} · ${fmtNum(udemyHours)}h</span></div>
+    <ul class="ucards">${UDEMY.map((u, i) => `<li class="ucard rv" data-k="${u.k}" ${d(i)}>
+      <h4>${u.title}</h4>
+      <p class="uby">${u.by}</p>
+      <p class="usum">${t(u.summary)}</p>
+      <p class="umeta"><span>${fmtNum(u.hours)}h</span><span>${fmtDay(u.date)}</span><span class="pill on">${t(UI.done)}</span><a href="${u.cert}" target="_blank" rel="noopener">${t(UI.cert)} ↗</a></p>
+    </li>`).join('')}</ul>
+  </div>`;
+
+  return `<section class="sec wrap" id="cursos">${secHead(7, 'cursos', UI.coursesSub)}
+    <div>
+      <div class="cgroup">
+        <div class="cgroup-h rv"><h3 class="blk">Alura</h3></div>
+        <div class="ctot rv">
+          <div><b data-count="${totalCourses}">${totalCourses}</b><span>${t(UI.certsAlura)}</span></div>
+          <div><b data-count="${totalHours}">${totalHours}</b><span>${t(UI.hours)}</span></div>
+          <div><b data-count="${COURSES.length}">${COURSES.length}</b><span>${t(UI.areas)}</span></div>
+        </div>
+        <div class="cats">${cats}</div>
+      </div>
+      ${udemy}
+    </div>
+  </section>`;
+}
+
+function renderBooks() {
+  const shelf = (id, key, list, cls, numbered) => list.length ? `<div class="shelf-wrap ${cls}">
+    <div class="shelf-h rv"><h3 class="blk">${t(UI[key])}</h3><span class="pill ${cls === 'queue' ? 'study' : 'on'}">${t(UI.booksCount).replace('{n}', list.length)}</span>
+      <span class="shelf-nav"><button type="button" class="icon-btn" data-shelf="${id}" data-dir="-1" aria-label="${t(UI.prev)}">${ICON.arrow}</button><button type="button" class="icon-btn" data-shelf="${id}" data-dir="1" aria-label="${t(UI.next)}">${ICON.arrow}</button></span>
+    </div>
+    <ul class="shelf rv" id="${id}">${list.map((b, i) => `<li class="bitem" data-k="${b.k}">
+      ${numbered ? `<span class="bnum">${String(i + 1).padStart(2, '0')}</span>` : ''}
+      <h4>${b.title}</h4><p class="bsub">${b.subtitle}</p><p class="bauth">${b.author}</p><p class="bsum">${t(b.summary)}</p>
+    </li>`).join('')}</ul>
+  </div>` : '';
+  const current = BOOKS.reading.map(b => `<article class="bfeature card rv" data-k="${b.k}">
+    <div>
+      <span class="pill study">${t(UI.reading)}</span>
+      <h3>${b.title}</h3><p class="bsub">${b.subtitle}</p><p class="bauth">${b.author}</p>
+      <p class="bsum">${t(b.summary)}</p>
+    </div>
+  </article>`).join('');
+  return `<section class="sec wrap" id="livros">${secHead(9, 'livros', UI.booksSub)}
+    <div>${current}${shelf('shelf-read', 'readL', BOOKS.read, 'read', false)}${shelf('shelf-next', 'nextL', BOOKS.next, 'queue', true)}</div>
+  </section>`;
+}
+
+function renderContact() {
+  // E-mail e WhatsApp em destaque; LinkedIn e GitHub como botões nas cores das marcas
+  const main = (href, icon, cls, label, value, i, blank) => `<a class="cmain ${cls} rv" ${d(i)} href="${href}"${blank ? ' target="_blank" rel="noopener"' : ''}>
+    <span class="cic">${icon}</span><span><small>${label}</small><b>${value}</b></span></a>`;
+  const brand = (href, icon, cls, label, i) => `<a class="bbtn ${cls} rv" ${d(i)} href="${href}" target="_blank" rel="noopener">${icon}${label}</a>`;
+  return `<section class="sec wrap contact" id="contato">${secHead(10, 'contato', UI.contactSub)}
+    <div>
+      <p class="rv">${t(UI.contactText)}</p>
+      <div class="cmains">
+        ${main(`mailto:${PROFILE.email}`, ICON.mail, 'mail', t(UI.email), PROFILE.email.replace('@', '@<wbr>'), 0, false)}
+        ${main(PROFILE.whatsapp, ICON.whatsapp, 'wa', 'WhatsApp', PROFILE.whatsappLabel, 1, true)}
+      </div>
+      <div class="bbtns">
+        ${brand(PROFILE.linkedin, ICON.linkedin, 'li', 'LinkedIn', 2)}
+        ${brand(PROFILE.github, ICON.github, 'gh', 'GitHub', 3)}
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ---------------- Currículo em PDF ----------------
+   Monta um currículo a partir dos mesmos dados do site e usa a impressão do navegador
+   (Salvar como PDF). Atualizou o site, o currículo sai atualizado. */
+function renderCV() {
+  const C = UI.cv;
+  // Datas no formato do currículo original: "Ago/2025" (PT/ES) e "Aug 2025" (EN)
+  const cvMonth = ym => { const { y, m } = parseYM(ym); const mo = MONTHS[lang][m - 1]; const cap = mo[0].toUpperCase() + mo.slice(1); return lang === 'en' ? `${cap} ${y}` : `${cap}/${y}`; };
+  const period = j => `${cvMonth(j.start)} – ${j.end ? cvMonth(j.end) : t(C.present)}`;
+  const sec = (title, body) => `<section><h2>${t(title)}</h2>${body}</section>`;
+
+  const summary = t(PROFILE.summary).replace('{certs}', ALL_COUNT()).replace('{hours}', fmtNum(ALL_HOURS()));
+
+  const skills = C.groups.map(([label, idx, extra]) => {
+    const items = idx.flatMap(i => HARD[i][1]).map(t);
+    if (extra === 'mgmt') items.push(...MGMT.map(m => t(m[0])));
+    return `<p><b>${t(label)}:</b> ${[...new Set(items)].join(', ')}</p>`;
+  }).join('') + `<p><b>${t(C.langs)}:</b> ${LANGUAGES.map(l => `${t(l.name)} (${t(l.levelName).toLowerCase()})`).join(' · ')}</p>`;
+
+  const jobs = JOBS.map(j => `<div class="cv-item">
+    <h3>${t(j.role)}</h3><p class="cv-meta">${j.company} &nbsp;|&nbsp; ${period(j)}</p>
+    <ul>${j.work.map(w => `<li>${jobItem(j, w, true, cvMonth)}</li>`).join('')}</ul>
+  </div>`).join('');
+
+  const edu = EDUCATION.map(e => {
+    const years = e.status === 'progress' ? `${e.startYear} – ${t(C.present)}` : e.years.replace('—', '–');
+    return `<div class="cv-item">
+      <h3>${t(e.title)}</h3><p class="cv-meta">${e.short || e.inst} &nbsp;|&nbsp; ${years}</p>
+      ${e.cvBullets ? `<ul>${e.cvBullets.map(b => `<li>${t(b)}</li>`).join('')}</ul>` : ''}
+    </div>`;
+  }).join('');
+
+  const pro = STACKS.slice(0, 4).flatMap(g => g.items).filter(i => i[2] === 'pro').map(i => t(i[0]));
+  const courses = `<ul>
+    <li>${t(C.paths)} ${new Intl.ListFormat(HTML_LANG[lang], { type: 'conjunction' }).format(COURSES.map(c => t(c.name)))} – Alura &nbsp;|&nbsp; ${ALURA_COUNT()} ${t(C.certs)} &nbsp;|&nbsp; ${fmtNum(ALURA_HOURS())} ${t(C.hours)}</li>
+    ${UDEMY.map(u => `<li>${u.title} – Udemy &nbsp;|&nbsp; ${fmtNum(u.hours)}h</li>`).join('')}
+  </ul>
+  <p>${t(C.continuous)}: ${pro.join(', ')}, ${t(C.continuousTail)}.</p>`;
+
+  return `<header>
+      <h1>${PROFILE.first} ${PROFILE.last}</h1>
+      <p class="cv-role">${t(PROFILE.title)} &nbsp;|&nbsp; ${PROFILE.stacks.join(' · ')}</p>
+      <p>${t(C.location)} &nbsp;|&nbsp; ${PROFILE.phone} &nbsp;|&nbsp; ${PROFILE.email}</p>
+      <p>Portfolio: <a href="${PROFILE.site}">${PROFILE.site.replace('https://', '')}</a> &nbsp;|&nbsp; GitHub: <a href="${PROFILE.github}">${PROFILE.github.replace('https://', '')}</a> &nbsp;|&nbsp; LinkedIn: <a href="${PROFILE.linkedin}">${PROFILE.linkedin.replace('https://www.', '')}</a></p>
+    </header>`
+    + sec(C.summary, `<p>${summary}</p>`)
+    + sec(C.skills, skills)
+    + sec(C.exp, jobs)
+    + sec(C.edu, edu)
+    + sec(C.courses, courses);
+}
+
+function fillCV() { document.getElementById('cv').innerHTML = renderCV(); }
+function downloadCV() {
+  fillCV();
+  const title = document.title;
+  const names = { pt: 'Curriculo', en: 'Resume', es: 'Curriculum' };
+  document.title = `${names[lang]}_Lucas_da_Silva_Trindade`; // nome sugerido para o PDF
+  addEventListener('afterprint', () => { document.title = title; }, { once: true });
+  print();
+}
+addEventListener('beforeprint', fillCV); // Ctrl+P também gera o currículo
+
+/* Dados estruturados (schema.org/Person) gerados a partir dos mesmos dados do site */
+function renderJsonLd() {
+  const cur = JOBS.find(j => !j.end);
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: `${PROFILE.first} ${PROFILE.last}`,
+    jobTitle: t(PROFILE.title),
+    description: t(PROFILE.summary).replace('{certs}', ALL_COUNT()).replace('{hours}', fmtNum(ALL_HOURS())),
+    email: `mailto:${PROFILE.email}`,
+    telephone: PROFILE.phone,
+    address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' },
+    url: PROFILE.site,
+    sameAs: [PROFILE.linkedin, PROFILE.github],
+    worksFor: cur ? { '@type': 'Organization', name: cur.company } : undefined,
+    alumniOf: EDUCATION.map(e => ({ '@type': 'EducationalOrganization', name: e.inst })),
+    knowsLanguage: LANGUAGES.map(l => ({ '@type': 'Language', name: t(l.name), description: t(l.levelName) })),
+    knowsAbout: STACKS.flatMap(g => g.items).filter(i => i[2] === 'pro').map(i => t(i[0])),
+    hasOccupation: JOBS.map(j => ({
+      '@type': 'Occupation', name: t(j.role),
+      description: `${j.company} (${j.start} – ${j.end || t(UI.current)})`,
+      skills: stacksAt(j.code).map(t).join(', '),
+    })),
+  };
+  let el = document.getElementById('ld-person');
+  if (!el) { el = document.createElement('script'); el.type = 'application/ld+json'; el.id = 'ld-person'; document.head.appendChild(el); }
+  el.textContent = JSON.stringify(data);
+}
+
+let firstRender = true;
+function render() {
+  const app = document.getElementById('app');
+  const open = [...document.querySelectorAll('details[open]')].map(x => x.id);
+  document.documentElement.lang = HTML_LANG[lang];
+  document.getElementById('skip').textContent = t(UI.skip);
+  app.innerHTML = renderNav() + '<main>' + renderHero() + renderAbout() + renderJobs() + renderStacks()
+    + renderMgmt() + renderEducation() + renderCourses() + renderLanguages() + renderBooks() + renderContact()
+    + `<footer class="wrap"><span>© ${now().getFullYear()} ${PROFILE.first} ${PROFILE.last}</span><a href="#top">${t(UI.top)} ↑</a></footer></main>`;
+  open.forEach(id => { const x = document.getElementById(id); if (x) x.open = true; });
+  if (firstRender) { app.classList.add('intro'); setTimeout(() => app.classList.remove('intro'), 2000); firstRender = false; }
+  renderJsonLd();
+  const wa = document.getElementById('wa-float'), cvb = document.getElementById('cv-float');
+  wa.href = PROFILE.whatsapp; wa.innerHTML = ICON.whatsapp;
+  wa.setAttribute('aria-label', `WhatsApp ${PROFILE.whatsappLabel}`); wa.dataset.tip = 'WhatsApp';
+  cvb.innerHTML = ICON.download; cvb.setAttribute('aria-label', t(UI.cvBtn)); cvb.dataset.tip = t(UI.cvBtn);
+  observeSections();
+  observeReveal();
+  updateProgress();
+}
+
+/* ---------------- Animações ao rolar ---------------- */
+// Guarda o índice dos elementos já revelados para que trocar o idioma não refaça as animações
+const revealed = new Set();
+let revealObserver;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+function countUp(el) {
+  const target = +el.dataset.count;
+  if (reduceMotion.matches || !target) return;
+  const t0 = performance.now(), dur = 1200;
+  const step = ts => {
+    const p = Math.min(1, (ts - t0) / dur);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  el.textContent = '0';
+  requestAnimationFrame(step);
+}
+
+function observeReveal() {
+  if (revealObserver) revealObserver.disconnect();
+  const els = [...document.querySelectorAll('.rv')];
+  if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+  revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      revealed.add(e.target.dataset.rk);
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      revealObserver.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach((el, i) => {
+    el.dataset.rk = i;
+    if (revealed.has(String(i))) el.classList.add('in', 'now');
+    else revealObserver.observe(el);
+  });
+}
+
+// Barra de progresso de leitura no topo
+let progressTick = false;
+function updateProgress() {
+  const bar = document.querySelector('.progress i');
+  if (!bar) return;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+}
+addEventListener('scroll', () => {
+  if (progressTick) return;
+  progressTick = true;
+  requestAnimationFrame(() => { updateProgress(); progressTick = false; });
+}, { passive: true });
+
+/* ---------------- Tema ---------------- */
+function currentTheme() {
+  const a = document.documentElement.getAttribute('data-theme');
+  if (a) return a;
+  return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function toggleTheme() {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  // A escolha manual fica salva no navegador (localStorage) e vale nas próximas visitas
+  document.documentElement.setAttribute('data-theme', next);
+  store.set('theme', next);
+  const btn = document.querySelector('[data-theme-toggle]');
+  if (btn) btn.innerHTML = next === 'dark' ? ICON.sun : ICON.moon;
+}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  const btn = document.querySelector('[data-theme-toggle]');
+  if (btn) btn.innerHTML = currentTheme() === 'dark' ? ICON.sun : ICON.moon;
+});
+
+/* ---------------- Navegação ativa ---------------- */
+let observer;
+function observeSections() {
+  if (observer) observer.disconnect();
+  const links = [...document.querySelectorAll('.links a')];
+  observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(a => {
+        const on = a.dataset.sec === e.target.id;
+        a.classList.toggle('on', on);
+        if (on) {
+          a.setAttribute('aria-current', 'true');
+          // No mobile a barra de links rola na horizontal: mantém o link ativo visível
+          const bar = a.parentElement;
+          if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
+        }
+        else a.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('main section[id]').forEach(s => observer.observe(s));
+}
+
+/* ---------------- Seletor de idioma ---------------- */
+const langBtn = () => document.querySelector('[data-lang-btn]');
+const langMenu = () => document.querySelector('.lang-menu');
+function openLang() {
+  langMenu().hidden = false;
+  langBtn().setAttribute('aria-expanded', 'true');
+  langMenu().querySelector('[aria-selected="true"]').focus();
+}
+function closeLang(focusBtn) {
+  const m = langMenu();
+  if (!m || m.hidden) return;
+  m.hidden = true;
+  langBtn().setAttribute('aria-expanded', 'false');
+  if (focusBtn) langBtn().focus();
+}
+function chooseLang(l) {
+  if (l !== lang) { lang = l; store.set('lang', lang); render(); }
+  else closeLang();
+  langBtn().focus();
+}
+
+/* ---------------- Eventos ---------------- */
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-lang-btn]')) { langMenu().hidden ? openLang() : closeLang(); return; }
+  const opt = e.target.closest('.lang-menu [data-lang]');
+  if (opt) { chooseLang(opt.dataset.lang); return; }
+  if (!e.target.closest('.lang')) closeLang();
+  if (e.target.closest('[data-theme-toggle]')) toggleTheme();
+  if (e.target.closest('[data-cv]')) downloadCV();
+  const sh = e.target.closest('[data-shelf]');
+  if (sh) { const el = document.getElementById(sh.dataset.shelf); el.scrollBy({ left: +sh.dataset.dir * el.clientWidth * .8, behavior: 'smooth' }); return; }
+  const more = e.target.closest('[data-more]');
+  if (more) {
+    const id = more.dataset.more, box = document.getElementById(id);
+    const open = !expanded.has(id);
+    open ? expanded.add(id) : expanded.delete(id);
+    box.classList.toggle('open', open);
+    more.setAttribute('aria-expanded', open);
+    if (!open && box.getBoundingClientRect().top < 0) box.scrollIntoView({ block: 'start' });
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.target.matches('[data-lang-btn]') && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) { e.preventDefault(); openLang(); return; }
+  const opt = e.target.closest('.lang-menu [data-lang]');
+  if (!opt) return;
+  const opts = [...langMenu().querySelectorAll('[data-lang]')];
+  const i = opts.indexOf(opt);
+  if (e.key === 'ArrowDown') { e.preventDefault(); opts[(i + 1) % opts.length].focus(); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); opts[(i - 1 + opts.length) % opts.length].focus(); }
+  else if (e.key === 'Home') { e.preventDefault(); opts[0].focus(); }
+  else if (e.key === 'End') { e.preventDefault(); opts[opts.length - 1].focus(); }
+  else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chooseLang(opt.dataset.lang); }
+  else if (e.key === 'Escape') { e.preventDefault(); closeLang(true); }
+  else if (e.key === 'Tab') closeLang();
+});
+
+render();
+
+// Recalcula as durações quando o mês vira (página aberta por muito tempo)
+let lastMonth = now().getMonth();
+setInterval(() => { if (now().getMonth() !== lastMonth) { lastMonth = now().getMonth(); render(); } }, 60 * 60 * 1000);
+</script>
+</body>
+</html>
