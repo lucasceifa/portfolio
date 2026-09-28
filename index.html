@@ -293,7 +293,7 @@ section { scroll-margin-top: calc(var(--nav-h) + var(--nav-links-h, 0px) + 16px)
 .ldesc { color: var(--muted); font-size: .9rem; margin-top: 8px; }
 
 /* ---------- Quem sou ---------- */
-.about p { font-size: 1.08rem; color: var(--muted); max-width: 62ch; }
+.about p { font-size: 1.08rem; color: var(--muted); }
 .about p + p { margin-top: 18px; }
 .about p:first-child { color: var(--text); font-size: 1.22rem; line-height: 1.5; }
 
@@ -349,7 +349,8 @@ section { scroll-margin-top: calc(var(--nav-h) + var(--nav-links-h, 0px) + 16px)
 .ai-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 .ai-head .blk { margin: 0; }
 .ai-sub { color: var(--muted); font-size: .92rem; margin: 8px 0 18px; }
-.ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.ai-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.ai-grid > li { flex: 1 1 200px; }
 .ai-tile {
   display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 14px;
   background: color-mix(in srgb, var(--k) 6%, var(--surface)); border: 1px solid color-mix(in srgb, var(--k) 22%, var(--line));
@@ -362,7 +363,8 @@ section { scroll-margin-top: calc(var(--nav-h) + var(--nav-links-h, 0px) + 16px)
 @keyframes twinkle { 50% { transform: scale(.78) rotate(20deg); opacity: .8; } }
 
 /* Gestão */
-.mgmt { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.mgmt { display: flex; flex-wrap: wrap; gap: 12px; }
+.mgmt > li { flex: 1 1 210px; }
 .mgmt li { display: grid; gap: 4px; align-content: start; padding: 20px; border-left: 3px solid var(--k-tools); }
 .mgmt b { font-size: 1rem; line-height: 1.35; }
 .mgmt .mdur { font-weight: 700; color: var(--accent-text); margin-top: 8px; }
